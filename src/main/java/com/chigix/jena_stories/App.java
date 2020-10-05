@@ -1,8 +1,12 @@
 package com.chigix.jena_stories;
 
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.rdf.model.Statement;
+import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.vocabulary.VCARD;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,5 +40,20 @@ public class App {
     johnSmith.addProperty(VCARD.N, model.createResource()
         .addProperty(VCARD.Given, givenName).addProperty(VCARD.Family, familyName));
     LOG.info("The newly generated resource: {}", johnSmith);
+
+    StmtIterator iter = model.listStatements();
+    while (iter.hasNext()) {
+      Statement stmt = iter.nextStatement();
+      Resource subject = stmt.getSubject();
+      Property predicate = stmt.getPredicate();
+      RDFNode object = stmt.getObject();
+      // print out N-Triple format message
+      if (object instanceof Resource) {
+        LOG.info("{} {} {} .", subject, predicate, object);
+      } else {
+        // Object is a literal
+        LOG.info("{} {} \"{}\" .", subject, predicate, object);
+      }
+    }
   }
 }
