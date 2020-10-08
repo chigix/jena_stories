@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.io.IOUtils;
@@ -16,12 +15,15 @@ import org.apache.jena.riot.system.stream.StreamManager;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * https://jena.apache.org/tutorials/rdf_api.html#ch-Operations-on-Models
+ */
 public class GraphMergeTest {
 
   private String expectedOutput;
 
   @Before
-  public void beforeEach() {
+  public void setUp() {
     try {
       this.expectedOutput = IOUtils.toString(
           getClass().getClassLoader().getResourceAsStream("snapshot-merged-graph.rdf"),
@@ -44,11 +46,7 @@ public class GraphMergeTest {
     Model mergedModel = modelPart1.union(modelPart2);
 
     final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-    try (PrintStream ps = new PrintStream(baos, true, StandardCharsets.UTF_8)) {
-      RDFDataMgr.write(ps, mergedModel, Lang.RDFXML);
-    } catch (final Exception e) {
-      e.printStackTrace();
-    }
+    RDFDataMgr.write(baos, mergedModel, Lang.RDFXML);
     assertEquals("Assert Merged Model", expectedOutput,
         baos.toString(StandardCharsets.UTF_8));
   }
