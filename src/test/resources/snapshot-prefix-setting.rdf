@@ -1,0 +1,13 @@
+<rdf:RDF
+    xmlns:chigix="http://chigix.com/else#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://kanban.run/else#">
+  <rdf:Description rdf:about="http://chigix.com/else#root">
+    <chigix:P>
+      <rdf:Description rdf:about="http://chigix.com/else#y">
+        <j.0:Q rdf:resource="http://chigix.com/else#z"/>
+      </rdf:Description>
+    </chigix:P>
+    <chigix:P rdf:resource="http://chigix.com/else#x"/>
+  </rdf:Description>
+</rdf:RDF>
