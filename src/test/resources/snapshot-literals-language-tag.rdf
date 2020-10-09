@@ -1,0 +1,9 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+  <rdf:Description>
+    <rdfs:label rdf:parseType="Literal"><em>chat</em></rdfs:label>
+    <rdfs:label xml:lang="jp">チャット</rdfs:label>
+    <rdfs:label xml:lang="en">chat</rdfs:label>
+  </rdf:Description>
+</rdf:RDF>
