@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Class rdf:ID="associateProfessor">
+    <rdfs:subClassOf rdf:resource="#academicStaffMember" />
+  </owl:Class>
+  <owl:Class rdf:about="#associateProfessor">
+    <owl:disjointWith rdf:resource="#professor" />
+    <owl:disjointWith rdf:resource="#assistantProfessor" />
+  </owl:Class>
+  <owl:Class rdf:ID="faculty">
+    <owl:equivalentClass rdf:resource="#academicStaffMember" />
+  </owl:Class>
+  <owl:Class rdf:about="#firstYearCourse">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#isTaughtBy" />
+        <owl:allValuesFrom rdf:resource="#Professor" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:DatatypeProperty rdf:ID="age">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger" />
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:ID="isTaughtBy">
+    <rdfs:domain rdf:resource="#course" />
+    <rdfs:range rdf:resource="#academicStaffMember" />
+    <rdfs:subPropertyOf rdf:resource="#involves" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="teaches">
+    <rdfs:range rdf:resource="#course" />
+    <rdfs:domain rdf:resource="#academicStaffMember" />
+    <owl:inverseOf rdf:resource="#isTaughtBy" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="lecturesIn">
+    <owl:equivalentProperty rdf:resource="#teaches" />
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="#mathCourse">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#isTaughtBy" />
+        <owl:hasValue rdf:resource="#949352" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#academicStaffMember">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#teaches" />
+        <owl:someValuesFrom rdf:resource="#undergraduateCourse" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#course">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#isTaughtBy" />
+        <owl:minCardinality rdf:datatype="nonNegativeInteger"> 1 </owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#department">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#hasMember" />
+        <owl:minCardinality rdf:datatype="nonNegativeInteger"> 10 </owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#hasMember" />
+        <owl:maxCardinality rdf:datatype="nonNegativeInteger"> 30 </owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="hasSameGradeAs">
+    <rdf:type rdf:resource="TransitiveProperty" />
+    <rdf:type rdf:resource="SymmetricProperty" />
+    <rdfs:domain rdf:resource="#student" />
+    <rdfs:range rdf:resource="#student" />
+  </owl:ObjectProperty>
+</rdf:RDF>
