@@ -24,10 +24,16 @@ public class DistinctionTest {
    */
   @Test
   public void testDistinction() {
-    // Create the base model
     final String SOURCE = "http://wwww.eswc2006.org/technologies/ontology";
     final String NS = SOURCE + "#";
+
+    // Use a recipe object to create an ontology model with none reasoner
+    // https://jena.apache.org/documentation/ontology/#creating-ontology-models
     OntModel base = createOntologyModel(OntModelSpec.OWL_MEM);
+
+    // Load an ontology Document
+    // Document refers to an ontology serialized in some transport syntax
+    // https://jena.apache.org/documentation/ontology/#compound-ontology-documents-and-imports-processing
     base.read(RDFDataMgr.open("african-wildlife.owl"), NS, "RDF/XML");
 
     // create a dummy animal for this example
@@ -38,7 +44,8 @@ public class DistinctionTest {
     Iterator<Resource> iterCarnivoreAssertedTypes = carnivore1.listRDFTypes(false);
     assertEquals(NS + "carnivore", iterCarnivoreAssertedTypes.next().getURI());
 
-    // create the reasoning model using the base
+    // Use a recipe object to create an ontology model with `optimised rule-based reasoner`
+    // copy the existing base model
     OntModel inf = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, base);
 
     // list the inferred types
