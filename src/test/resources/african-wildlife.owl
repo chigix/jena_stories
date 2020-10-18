@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Ontology rdf:about="xml:base" />
+
+  <owl:Class rdf:ID="animal">
+    <rdfs:comment>Animals form a class.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#animal" />
+  </owl:Class>
+
+  <owl:Class rdf:ID="tree">
+    <rdfs:comment>Trees are a type of plant.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#plant" />
+  </owl:Class>
+
+  <owl:Class rdf:ID="branch">
+    <rdfs:comment>Branches are parts of trees.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#is_part_of" />
+        <owl:allValuesFrom rdf:resource="#tree" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="leaf">
+    <rdfs:comment>Leaves are parts of branches.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#is_party_of" />
+        <owl:allValuesFrom rdf:resource="#branch" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="herbivore">
+    <rdfs:comment>Herbivores are exactly those animals that eat only plants
+      or parts of plants.</rdfs:comment>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="#animal" />
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eats" />
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#plant" />
+              <owl:Restriction>
+                <owl:onProperty rdf:resource="#is_party_of" />
+                <owl:allValuesFrom rdf:resource="#plant" />
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </owl:intersectionOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="carnivore">
+    <rdfs:comment>
+      Carnivores are exactly those animals that eat animals.
+    </rdfs:comment>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="#animal" />
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eats" />
+        <owl:someValuesFrom rdf:resource="#animal" />
+      </owl:Restriction>
+    </owl:intersectionOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="giraffe">
+    <rdfs:comment>
+      Giraffes are herbivores, and they eat only leaves.
+    </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#herbivore" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eats" />
+        <owl:allValuesFrom rdf:resource="#leaf" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="lion">
+    <rdfs:comment>
+      Lions are animals that eat only herbivores.
+    </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#carnivore" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eats" />
+        <owl:allValuesFrom rdf:resource="#herbivore" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="tasty_plant">
+    <rdfs:comment>
+      Tasty plants are plants that are eaten both by herbivores and carnivores.
+    </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#plant" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eaten_by" />
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#herbivore" />
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eaten_by" />
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#carnivore" />
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:TransitiveProperty rdf:ID="is_part_of" />
+  <owl:ObjectProperty rdf:ID="eats">
+    <rdfs:domain rdf:resource="#animal" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="eaten_by">
+    <owl:inverseOf rdf:resource="#eats" />
+  </owl:ObjectProperty>
+</rdf:RDF>

@@ -46,7 +46,6 @@ public class PrefixModifyTest {
           getClass().getClassLoader().getResourceAsStream("snapshot-prefix-setting.rdf"),
           StandardCharsets.UTF_8);
     } catch (IOException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }

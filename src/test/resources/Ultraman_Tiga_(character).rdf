@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:dbo="http://dbpedia.org/ontology/"
+	xmlns:dbp="http://dbpedia.org/property/"
+	xmlns:foaf="http://xmlns.com/foaf/0.1/"
+	xmlns:prov="http://www.w3.org/ns/prov#" >
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Ultraman_Tiga_(character)">
+    <rdf:type rdf:resource="http://www.wikidata.org/entity/Q5" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <rdf:type rdf:resource="http://www.wikidata.org/entity/Q95074" />
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/Agent" />
+    <rdf:type rdf:resource="http://www.wikidata.org/entity/Q215627" />
+    <rdf:type rdf:resource="http://www.wikidata.org/entity/Q24229398" />
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/FictionalCharacter" />
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person" />
+    <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent" />
+    <rdf:type rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson" />
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/Person" />
+    <rdf:type rdf:resource="http://schema.org/Person" />
+    <rdfs:label xml:lang="en">Ultraman Tiga (character)</rdfs:label>
+    <rdfs:comment xml:lang="en">Ultraman Tiga (ウルトラマンティガ Urutoraman Tiga) is a fictional superhero from the 1996 Ultra Series, Ultraman Tiga, which ended a 15 year long hiatus of the serial television Ultra Series, with the last one being Ultraman 80, whose final episode was in 1981. In the series, Ultraman Tiga&#39;s body bonded with Daigo Madoka, a man who was the giant&#39;s direct descendant and reincarnation, to fight against monstrous threats during the series&#39; course. Following the destruction of the dark ruler Gatanothor, Daigo lost his ability to transform into Tiga, signifying that the ancient warrior&#39;s appearance on Earth was over.</rdfs:comment>
+    <owl:sameAs rdf:resource="http://dbpedia.org/resource/Ultraman_Tiga_(character)" />
+    <dct:subject rdf:resource="http://dbpedia.org/resource/Category:Fictional_giants" />
+    <dct:subject rdf:resource="http://dbpedia.org/resource/Category:Japanese_superheroes" />
+    <dct:subject rdf:resource="http://dbpedia.org/resource/Category:Fictional_characters_introduced_in_1996" />
+    <dct:subject rdf:resource="http://dbpedia.org/resource/Category:Ultra_Series_characters" />
+    <dct:subject rdf:resource="http://dbpedia.org/resource/Category:Ultraman_Tiga" />
+    <dbo:wikiPageID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">51382376</dbo:wikiPageID>
+    <dbo:wikiPageRevisionID rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">744866571</dbo:wikiPageRevisionID>
+    <dbo:wikiPageExternalLink rdf:resource="http://m-78.jp/ultraheroes/" />
+    <dbo:wikiPageExternalLink rdf:resource="http://www.imdb.com/character/ch0516304/?ref_=ttfc_fc_cl_t2" />
+    <dbo:wikiPageExternalLink rdf:resource="http://www.imdb.com/character/ch0174121/?ref_=ttfc_fc_cl_t9" />
+    <dbp:reference rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString">『劇場版 ウルトラマンX きたぞ!われらのウルトラマン』パンフレット 2016年3月3日発行 編集：Shogakukan「Televi-kun編集部」 編集・発行：Shochiku株式会社事業部</dbp:reference>
+    <foaf:name xml:lang="en">Tsubasa Madoka</foaf:name>
+    <foaf:name xml:lang="en">Amui</foaf:name>
+    <foaf:name xml:lang="en">Ultraman Tiga</foaf:name>
+    <foaf:name xml:lang="en">Yuuto Tamaki</foaf:name>
+    <foaf:name xml:lang="en">Daigo Madoka</foaf:name>
+    <foaf:isPrimaryTopicOf rdf:resource="http://en.wikipedia.org/wiki/Ultraman_Tiga_(character)" />
+    <prov:wasDerivedFrom rdf:resource="http://en.wikipedia.org/wiki/Ultraman_Tiga_(character)?oldid=744866571" />
+    <dbo:abstract xml:lang="en">Ultraman Tiga (ウルトラマンティガ Urutoraman Tiga) is a fictional superhero from the 1996 Ultra Series, Ultraman Tiga, which ended a 15 year long hiatus of the serial television Ultra Series, with the last one being Ultraman 80, whose final episode was in 1981. In the series, Ultraman Tiga&#39;s body bonded with Daigo Madoka, a man who was the giant&#39;s direct descendant and reincarnation, to fight against monstrous threats during the series&#39; course. Following the destruction of the dark ruler Gatanothor, Daigo lost his ability to transform into Tiga, signifying that the ancient warrior&#39;s appearance on Earth was over. During the run of the series, Tsuburaya Prods. celebrated the 30th anniversary of Ultra Series, by having Ultraman Tiga meet with an alternate version of the original Ultraman. Aside from that, Tiga&#39;s appearance laid a huge impact on the Ultra Series, as not only being the first Heisei Era Ultra Warrior, but also introduced the ability for Ultra Warriors to change their forms and appearances. Tiga himself enjoyed a huge popularity among fans due to the aforementioned traits and started to appear in succeeding media of the Ultra Series, either as himself (without proper explanation) or as an alternate reality version of the character. Ultraman Tiga&#39;s grunts were provided by Yūji Machi (真地 勇志 Machi Yūji) during his series, who would later become the narrator of Ultraman Dyna, the succeeding series after Tiga. His grunts were recorded and recycled for Tiga&#39;s future appearances. During the movie Ultraman Tiga: The Final Odyssey and Superior Ultraman 8 Brothers, his grunts were provided by Hiroshi Nagano, Daigo Madoka&#39;s actor. Meanwhile, his suit actors were Shunsuke Gondō (権藤 俊輔 Gondō Shunsuke) in Multi and Power Type and Koji Nakamura (中村 浩二 Nakamura Kōji) in Multi and Sky Type.</dbo:abstract>
+    <dbo:alias xml:lang="en">Tiga Dark (Original name/form)</dbo:alias>
+    <dbo:alias xml:lang="en">Tiga</dbo:alias>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Tsuburaya_Productions" />
+    <dbo:firstAppearance>Ultraman Tiga</dbo:firstAppearance>
+    <dbo:firstAppearance>Ultraman Tiga (1996)</dbo:firstAppearance>
+    <dbo:firstAppearance>Ultraman Tiga: Revival of the Ancient Giant (2001)</dbo:firstAppearance>
+    <dbo:firstAppearance>Ultraman X: Here It Comes! Our Ultraman (2016)</dbo:firstAppearance>
+    <dbo:portrayer rdf:resource="http://dbpedia.org/resource/Shogo_Yamaguchi" />
+    <dbo:portrayer rdf:resource="http://dbpedia.org/resource/Hiroshi_Nagano" />
+    <dbo:portrayer rdf:resource="http://dbpedia.org/resource/Koji_Nakamura_(suit_actor)" />
+    <dbo:series rdf:resource="http://dbpedia.org/resource/Ultra_Series" />
+    <dbp:caption rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString">Ultraman Tiga as featured in Ultraman X The Movie.</dbp:caption>
+    <dbp:color rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString">#001</dbp:color>
+    <dbp:noinfo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</dbp:noinfo>
+    <dbp:colorText rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString">#ffa</dbp:colorText>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://en.wikipedia.org/wiki/Ultraman_Tiga_(character)">
+    <foaf:primaryTopic rdf:resource="http://dbpedia.org/resource/Ultraman_Tiga_(character)" />
+  </rdf:Description>
+</rdf:RDF>

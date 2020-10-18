@@ -42,7 +42,6 @@ public class GraphContainerTest {
           getClass().getClassLoader().getResourceAsStream("snapshot-bag-demo.rdf"),
           StandardCharsets.UTF_8);
     } catch (IOException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }
