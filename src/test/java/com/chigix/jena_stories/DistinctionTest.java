@@ -2,6 +2,7 @@ package com.chigix.jena_stories;
 
 import static org.apache.jena.rdf.model.ModelFactory.createOntologyModel;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Iterator;
@@ -53,8 +54,10 @@ public class DistinctionTest {
     Iterator<Resource> iterCarnivoreInferredTypes = carnivore1Infered.listRDFTypes(false);
     // <owl:Class rdf:ID="carnivore">
     assertEquals(NS + "carnivore", iterCarnivoreInferredTypes.next().getURI());
+
     Resource intersection = iterCarnivoreInferredTypes.next();
-    // StmtIterator intersectionStmts = intersection.listProperties();
+    assertNull(intersection.getURI());
+
     StmtIterator intersectionStmts = intersection
         .listProperties(inf.getProperty("http://www.w3.org/2002/07/owl#someValuesFrom"));
     // <owl:Class rdf:about="#animal" />
