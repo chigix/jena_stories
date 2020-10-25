@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns="http://ontology.chigix.com/printer.owl#">
+
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo>
+      My example version 1.2, 17 October 2002
+    </owl:versionInfo>
+  </owl:Ontology>
+
+  <owl:Class rdf:ID="product">
+    <rdfs:comment>Products form a class.</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="padid">
+    <rdfs:comment>
+      Printing and digital imaging devices form a subclass of products.
+    </rdfs:comment>
+    <rdfs:label>Device</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#product" />
+  </owl:Class>
+
+  <owl:Class rdf:ID="hpProduct">
+    <rdfs:comment>
+      HP products are exactly those products that are manufactured by Hewlett Packard.
+    </rdfs:comment>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="#product" />
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#manufactured_by" />
+        <owl:hasValue rdf:datatype="xsd:string">
+          Hewlett Packard
+        </owl:hasValue>
+      </owl:Restriction>
+    </owl:intersectionOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="printer">
+    <rdfs:comment>
+      Printers are printing and digital imaging devices.
+    </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#padid" />
+  </owl:Class>
+
+  <owl:Class rdf:ID="personalPrinter">
+    <rdfs:comment>
+      Printers for personal use form a subclass of printers.
+    </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#printer" />
+  </owl:Class>
+
+  <owl:Class rdf:ID="hpPrinter">
+    <rdfs:comment>
+      HP printers are the HP products and printers.
+    </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#printer" />
+    <rdfs:subClassOf rdf:resource="#hpProduct" />
+  </owl:Class>
+
+  <owl:Class rdf:ID="laserJetPrinter">
+    <rdfs:comment>
+      Laser jet printers are exactly those printers that use laser jet printing technology.
+    </rdfs:comment>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="#printer" />
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#printingTechnology" />
+        <owl:hasValue rdf:datatype="xsd:string">
+          laser jet
+        </owl:hasValue>
+      </owl:Restriction>
+    </owl:intersectionOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="hpLaserJetPrinter">
+    <rdfs:comment>
+      HP laser jet printers are HP products and laser jet printers.
+    </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#laserJetPrinter" />
+    <rdfs:subClassOf rdf:resource="#hpPrinter" />
+  </owl:Class>
+
+  <owl:Class rdf:ID="hp1100series">
+    <rdfs:comment>
+      hp1100series printers are HP laser jet printers with 8ppm printing speed
+      and 600dpi printing resolution.
+    </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#hpLaserJetPrinter" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#printingSpeed" />
+        <owl:hasValue rdf:datatype="xsd:string">8ppm</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#printingResolution" />
+        <owl:hasValue rdf:datatype="xsd:string">600dpi</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="hp1100se">
+    <rdfs:comment>
+      1100se printers belong to the 1100 series and cost $450.
+    </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#hp1100series" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#price" />
+        <owl:hasValue rdf:datatype="xsd:integer">450</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="hp1100xi">
+    <rdfs:comment>
+      1100xi printers belong to the 1100 series and cost $350.
+    </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#hp1100series" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#price" />
+        <owl:hasValue rdf:datatype="xsd:integer">350</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:ID="manufactured_by">
+    <rdfs:domain rdf:resource="#product" />
+    <rdfs:range rdf:resource="xsd:string" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="price">
+    <rdfs:domain rdf:resource="#product" />
+    <rdfs:range rdf:resource="xsd:nonNegativeInteger" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="printingTechnology">
+    <rdfs:domain rdf:resource="#printer" />
+    <rdfs:range rdf:resource="xsd:string" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="printingResolution">
+    <rdfs:domain rdf:resource="#printer" />
+    <rdfs:range rdf:resource="xsd:string" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="printingSpeed">
+    <rdfs:domain rdf:resource="#printer" />
+    <rdfs:range rdf:resource="xsd:string" />
+  </owl:DatatypeProperty>
+</rdf:RDF>
