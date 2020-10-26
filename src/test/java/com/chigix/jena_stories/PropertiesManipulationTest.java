@@ -1,6 +1,7 @@
 package com.chigix.jena_stories;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -10,6 +11,7 @@ import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.jena.ontology.DatatypeProperty;
+import org.apache.jena.ontology.FunctionalProperty;
 import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
@@ -27,16 +29,20 @@ import org.junit.Test;
  * A simple test on the set of convenient Java classes that helps manipulate
  * properties represented in an ontology model.
  */
-public class PropertiesManipulation {
+public class PropertiesManipulationTest {
 
   private static final String NS = "http://chigix.com/else#";
   private String expectedOntologyPropertyResult;
+  private String expectedConvertedFunctionalPropertyResult;
 
   @Before
   public void setUp() {
     try {
       this.expectedOntologyPropertyResult = IOUtils.toString(
           getClass().getClassLoader().getResourceAsStream("snapshot-ontology-properties.owl"),
+          StandardCharsets.UTF_8);
+      this.expectedConvertedFunctionalPropertyResult = IOUtils.toString(
+          getClass().getClassLoader().getResourceAsStream("snapshot-functional-property-convert.owl"),
           StandardCharsets.UTF_8);
     } catch (IOException e) {
       e.printStackTrace();
@@ -93,4 +99,18 @@ public class PropertiesManipulation {
 
     assertEquals(NS + "printingSpec", printingTech.getSuperProperty().getURI());
   }
+
+  @Test
+  public void testFunctionalProperty() {
+    OntModel m = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
+    m.read(getClass().getClassLoader().getResourceAsStream("african-wildlife.owl"), NS);
+    ObjectProperty property = m.getObjectProperty(NS + "eats");
+    assertFalse(property.isFunctionalProperty());
+    FunctionalProperty newFuncProp = property.convertToFunctionalProperty();
+    assertTrue(newFuncProp.isFunctionalProperty());
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    m.write(baos);
+    assertEquals(baos.toString(), expectedConvertedFunctionalPropertyResult);
+  }
+
 }

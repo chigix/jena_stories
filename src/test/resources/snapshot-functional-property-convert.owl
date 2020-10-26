@@ -1,0 +1,134 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Ontology rdf:about="xml:base"/>
+  <owl:Class rdf:about="http://chigix.com/else#carnivore">
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="http://chigix.com/else#animal"/>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://chigix.com/else#animal"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://chigix.com/else#eats"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </owl:intersectionOf>
+    <rdfs:comment>
+      Carnivores are exactly those animals that eat animals.
+    </rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://chigix.com/else#plant"/>
+  <owl:Class rdf:about="http://chigix.com/else#tree">
+    <rdfs:subClassOf rdf:resource="http://chigix.com/else#plant"/>
+    <rdfs:comment>Trees are a type of plant.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://chigix.com/else#herbivore">
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="http://chigix.com/else#animal"/>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="http://chigix.com/else#plant"/>
+              <owl:Restriction>
+                <owl:allValuesFrom rdf:resource="http://chigix.com/else#plant"/>
+                <owl:onProperty rdf:resource="http://chigix.com/else#is_party_of"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://chigix.com/else#eats"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </owl:intersectionOf>
+    <rdfs:comment>Herbivores are exactly those animals that eat only plants
+      or parts of plants.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://chigix.com/else#branch">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://chigix.com/else#tree"/>
+        <owl:onProperty>
+          <owl:TransitiveProperty rdf:about="http://chigix.com/else#is_part_of"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment>Branches are parts of trees.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://chigix.com/else#tasty_plant">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://chigix.com/else#carnivore"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://chigix.com/else#eaten_by"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://chigix.com/else#herbivore"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://chigix.com/else#eaten_by"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://chigix.com/else#plant"/>
+    <rdfs:comment>
+      Tasty plants are plants that are eaten both by herbivores and carnivores.
+    </rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://chigix.com/else#lion">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://chigix.com/else#herbivore"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://chigix.com/else#eats"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://chigix.com/else#carnivore"/>
+    <rdfs:comment>
+      Lions are animals that eat only herbivores.
+    </rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://chigix.com/else#leaf">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://chigix.com/else#branch"/>
+        <owl:onProperty rdf:resource="http://chigix.com/else#is_party_of"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment>Leaves are parts of branches.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://chigix.com/else#animal">
+    <owl:disjointWith rdf:resource="http://chigix.com/else#animal"/>
+    <rdfs:comment>Animals form a class.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://chigix.com/else#giraffe">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://chigix.com/else#leaf"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://chigix.com/else#eats"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://chigix.com/else#herbivore"/>
+    <rdfs:comment>
+      Giraffes are herbivores, and they eat only leaves.
+    </rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://chigix.com/else#eaten_by">
+    <owl:inverseOf>
+      <owl:FunctionalProperty rdf:about="http://chigix.com/else#eats"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:FunctionalProperty rdf:about="http://chigix.com/else#eats">
+    <rdfs:domain rdf:resource="http://chigix.com/else#animal"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+</rdf:RDF>
