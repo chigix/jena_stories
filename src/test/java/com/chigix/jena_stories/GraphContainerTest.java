@@ -69,8 +69,9 @@ public class GraphContainerTest {
     // Validate the graph
     final ByteArrayOutputStream baos = new ByteArrayOutputStream();
     RDFDataMgr.write(baos, model, Lang.RDFXML);
-    assertThat(baos.toString(StandardCharsets.UTF_8), isSimilarTo(expectedOutput)
-        .withNodeMatcher(new DefaultNodeMatcher(ElementSelectors.byNameAndText)));
+    assertThat(baos.toString(StandardCharsets.UTF_8),
+        isSimilarTo(expectedOutput)
+            .withNodeMatcher(new DefaultNodeMatcher(ElementSelectors.byNameAndText)));
 
     // Get the members of the bag
     NodeIterator nodes = smiths.iterator();
