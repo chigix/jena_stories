@@ -11,6 +11,8 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.hasItemInArray;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.isA;
+import static org.hamcrest.Matchers.equalTo;
 import static org.xmlunit.matchers.CompareMatcher.isSimilarTo;
 
 import java.io.ByteArrayOutputStream;
@@ -27,6 +29,7 @@ import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.ontology.Restriction;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Resource;
 import org.junit.Before;
 import org.junit.Test;
 import org.xmlunit.diff.DefaultNodeMatcher;
@@ -39,12 +42,16 @@ public class RestrictionTest {
 
   private static final String NS = "http://chigix.com/else#";
   private String expectedTwoRestrictionCreateResult;
+  private String expectedHasValueExpression;
 
   @Before
   public void setUp() {
     try {
-      this.expectedTwoRestrictionCreateResult = IOUtils.toString(
+      expectedTwoRestrictionCreateResult = IOUtils.toString(
           getClass().getClassLoader().getResourceAsStream("snapshot-two-restriction.owl"),
+          StandardCharsets.UTF_8);
+      expectedHasValueExpression = IOUtils.toString(
+          getClass().getClassLoader().getResourceAsStream("snapshot-hasvalue-expression.owl"),
           StandardCharsets.UTF_8);
     } catch (IOException e) {
       e.printStackTrace();
@@ -122,5 +129,24 @@ public class RestrictionTest {
       }
       fail();
     }
+  }
+
+  /**
+   * Example from A Semantic Primer
+   */
+  @Test
+  public void testHasValueRestriction() {
+    OntModel m = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
+    OntClass MathCourse = m.createClass(NS + "mathCourse");
+    ObjectProperty isTaughtBy = m.createObjectProperty(NS + "isTaughtBy");
+    Resource davidBillington = m.createResource(NS + "949352");
+    Restriction r = m.createHasValueRestriction(null, isTaughtBy, davidBillington);
+    // Restriction is a Class Expression:
+    // a local anonymous class that satisfy certain restriction conditions
+    assertThat(r, isA(OntClass.class));
+    MathCourse.setSuperClass(r);
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    m.write(baos);
+    assertThat(baos.toString(), equalTo(expectedHasValueExpression));
   }
 }
