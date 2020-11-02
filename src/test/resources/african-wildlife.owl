@@ -30,7 +30,7 @@
     <rdfs:comment>Leaves are parts of branches.</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onProperty rdf:resource="#is_party_of" />
+        <owl:onProperty rdf:resource="#is_part_of" />
         <owl:allValuesFrom rdf:resource="#branch" />
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -48,7 +48,7 @@
             <owl:unionOf rdf:parseType="Collection">
               <owl:Class rdf:about="#plant" />
               <owl:Restriction>
-                <owl:onProperty rdf:resource="#is_party_of" />
+                <owl:onProperty rdf:resource="#is_part_of" />
                 <owl:allValuesFrom rdf:resource="#plant" />
               </owl:Restriction>
             </owl:unionOf>

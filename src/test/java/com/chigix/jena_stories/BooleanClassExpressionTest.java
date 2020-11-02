@@ -10,8 +10,15 @@ import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.jena.ontology.BooleanClassDescription;
+import org.apache.jena.ontology.ComplementClass;
+import org.apache.jena.ontology.HasValueRestriction;
+import org.apache.jena.ontology.Individual;
+import org.apache.jena.ontology.IntersectionClass;
+import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
+import org.apache.jena.ontology.SomeValuesFromRestriction;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFList;
 import org.apache.jena.rdf.model.RDFNode;
@@ -27,6 +34,8 @@ public class BooleanClassExpressionTest {
   private static final String NS = "http://chigix.com/else#";
   private String expectedListConstruction;
   private String expectedCollectionBuilding;
+  private String expectedIntersectionBuilding;
+  private String expectedComplementOf;
 
   @Before
   public void setUp() {
@@ -36,6 +45,12 @@ public class BooleanClassExpressionTest {
           StandardCharsets.UTF_8);
       expectedCollectionBuilding = IOUtils.toString(
           getClass().getClassLoader().getResourceAsStream("snapshot-collection-building.owl"),
+          StandardCharsets.UTF_8);
+      expectedIntersectionBuilding = IOUtils.toString(
+          getClass().getClassLoader().getResourceAsStream("snapshot-intersection-building.owl"),
+          StandardCharsets.UTF_8);
+      expectedComplementOf = IOUtils.toString(
+          getClass().getClassLoader().getResourceAsStream("snapshot-complement-of.owl"),
           StandardCharsets.UTF_8);
     } catch (IOException e) {
       e.printStackTrace();
@@ -86,6 +101,56 @@ public class BooleanClassExpressionTest {
         .withTest(Input.fromString(expectedCollectionBuilding))
         .withNodeFilter(x -> !x.getNodeName().equals("rdf:Description")).build();
     assertFalse(d.hasDifferences());
+  }
+
+  /**
+   * https://jena.apache.org/documentation/ontology/#intersection-union-and-complement-class-expressions
+   */
+  @Test
+  public void testIntersectionBuilding() {
+    OntModel m = ModelFactory.createOntologyModel();
+
+    // Create the class references
+    OntClass place = m.createClass(NS + "place");
+    OntClass indTrack = m.createClass(NS + "IndustryTrack");
+
+    // Get the property reference
+    ObjectProperty hasPart = m.createObjectProperty(NS + "hasPart");
+    ObjectProperty hasLoc = m.createObjectProperty(NS + "hasLocation");
+
+    // Create the UK instance
+    Individual uk = place.createIndividual(NS + "united_kingdom");
+
+    // Now the anonymous restrictions
+    HasValueRestriction ukLocation = m.createHasValueRestriction(null, hasLoc, uk);
+    SomeValuesFromRestriction hasIndTrack = m.createSomeValuesFromRestriction(null, hasPart, indTrack);
+
+    // Finally create the intersection class
+    IntersectionClass ukIndustrialConf = m.createIntersectionClass(NS + "UKIndustrialConference",
+        m.createList(new RDFNode[] { ukLocation, hasIndTrack }));
+    assertThat(ukIndustrialConf, Matchers.instanceOf(BooleanClassDescription.class));
+
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    m.write(baos);
+    assertThat(baos.toString(), Matchers.equalTo(expectedIntersectionBuilding));
+  }
+
+  /**
+   * Example in ch.4.2.7 in _A Semantic Web Primer_
+   */
+  @Test
+  public void testComplementOf() {
+    OntModel m = ModelFactory.createOntologyModel();
+
+    // Create the class references
+    OntClass course = m.createClass(NS + "course");
+
+    // Finally create the complement class
+    ComplementClass staffMember = m.createComplementClass(NS + "staffMember", course);
+
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    m.write(baos);
+    assertThat(baos.toString(), Matchers.equalTo(expectedComplementOf));
   }
 
 }
