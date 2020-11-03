@@ -1,0 +1,16 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+  <owl:Class rdf:about="http://wwww.eswc2006.org/technologies/ontology#weekdays">
+    <owl:oneOf rdf:parseType="Collection">
+      <owl:Thing rdf:about="http://wwww.eswc2006.org/technologies/ontology#Monday"/>
+      <owl:Thing rdf:about="http://wwww.eswc2006.org/technologies/ontology#Tuesday"/>
+      <owl:Thing rdf:about="http://wwww.eswc2006.org/technologies/ontology#Wednesday"/>
+      <owl:Thing rdf:about="http://wwww.eswc2006.org/technologies/ontology#Thursday"/>
+      <owl:Thing rdf:about="http://wwww.eswc2006.org/technologies/ontology#Friday"/>
+    </owl:oneOf>
+  </owl:Class>
+</rdf:RDF>
