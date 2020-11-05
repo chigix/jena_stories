@@ -2,6 +2,7 @@ package com.chigix.jena_stories;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import static org.xmlunit.matchers.CompareMatcher.isSimilarTo;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -24,8 +25,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xmlunit.diff.DefaultNodeMatcher;
 import org.xmlunit.diff.ElementSelectors;
-
-import static org.xmlunit.matchers.CompareMatcher.isSimilarTo;
 
 /**
  * https://jena.apache.org/tutorials/rdf_api.html#ch-Containers

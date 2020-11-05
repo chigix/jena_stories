@@ -1,0 +1,30 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://ontology.chigix.com/some#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:uni="http://ontology.chigix.com/uni#">
+  <owl:Class rdf:about="http://ontology.chigix.com/some#academicStaffMember"/>
+  <owl:Class rdf:about="http://ontology.chigix.com/some#course"/>
+  <owl:FunctionalProperty rdf:about="http://ontology.chigix.com/some#isTaughtBy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <j.0:course rdf:about="http://ontology.chigix.com/some#CIT1111">
+    <j.0:isTaughtBy>
+      <j.0:academicStaffMember rdf:about="http://ontology.chigix.com/some#id949318"/>
+    </j.0:isTaughtBy>
+    <j.0:isTaughtBy>
+      <j.0:academicStaffMember rdf:about="http://ontology.chigix.com/some#id949352">
+        <uni:age rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >39</uni:age>
+      </j.0:academicStaffMember>
+    </j.0:isTaughtBy>
+  </j.0:course>
+  <owl:AllDifferent>
+    <owl:distinctMembers rdf:parseType="Collection">
+      <j.0:academicStaffMember rdf:about="http://ontology.chigix.com/some#id949352"/>
+      <j.0:academicStaffMember rdf:about="http://ontology.chigix.com/some#id949318"/>
+    </owl:distinctMembers>
+  </owl:AllDifferent>
+</rdf:RDF>
