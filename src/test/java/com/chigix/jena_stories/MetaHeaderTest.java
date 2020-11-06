@@ -69,6 +69,10 @@ public class MetaHeaderTest {
     // rdf:about="" is a shorthand way of referencing the document's base URI
     // The base URI can be specified from read() method.
     assertThat(model.getOntology("http://ontology.chigix.com/some"), notNullValue(Ontology.class));
+
+    // https://jena.apache.org/documentation/ontology/#the-generic-ontology-type-ontresource
+    assertThat(model.getOntology("http://ontology.chigix.com/some").getComment(null),
+        equalTo("An example that shows an ontology that describes African wildlife."));
   }
 
   /**
@@ -125,6 +129,8 @@ public class MetaHeaderTest {
 
   /**
    * https://jena.apache.org/documentation/ontology/#ontology-meta-data
+   * `owl:imports` statements do not cause the corresponding document to be
+   * imported by default.
    */
   @Test
   public void testOntologyImport() {
@@ -137,5 +143,18 @@ public class MetaHeaderTest {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     model.write(baos);
     assertThat(baos.toString(), equalTo(expectedOntologyImportResult));
+  }
+
+  @Test
+  public void testPrinterVersionGet() {
+    OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
+    model.read(RDFDataMgr.open("printer-ontology.owl"), "xml:base", "RDF/XML");
+    Ontology baseOntology = model.getOntology("xml:base");
+
+    // https://jena.apache.org/documentation/ontology/#the-generic-ontology-type-ontresource
+    assertThat(baseOntology.getVersionInfo(),
+        equalTo("\n      My example version 1.2, 17 October 2002\n    "));
+
+    assertThat(baseOntology.getPriorVersion(), nullValue());
   }
 }
