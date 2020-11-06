@@ -9,6 +9,7 @@ import java.nio.charset.StandardCharsets;
 import org.apache.commons.io.IOUtils;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
+import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.ontology.ProfileRegistry;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.riot.Lang;
@@ -17,6 +18,12 @@ import org.junit.Test;
 
 /**
  * https://jena.apache.org/documentation/ontology/#creating-ontology-models
+ *
+ * This case is intended to confirm difference on format from Jena Model
+ * Serializer (XMl Generator).
+ *
+ * Because Language selection is covered by OntModelSpec as well, it is
+ * primarily the choice of reasoner, rather than the choice of language profile.
  */
 public class OntologyLanguage {
 
@@ -65,6 +72,25 @@ public class OntologyLanguage {
   @Test
   public void createOntologyInOwlDl() throws Exception {
     OntModel ontology = ModelFactory.createOntologyModel(ProfileRegistry.OWL_DL_LANG);
+    assertEquals("http://www.w3.org/TR/owl-features/#term_OWLDL", ProfileRegistry.OWL_DL_LANG);
+    OntClass animal = ontology.createClass(SOURCE + "#animal");
+    ontology.createIndividual(SOURCE + "#uma", animal);
+    final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    ontology.write(baos, Lang.RDFXML.getName());
+    assertEquals(expectedAnimalOntologyInOwl, baos.toString(StandardCharsets.UTF_8));
+  }
+
+  /**
+   * https://jena.apache.org/documentation/ontology/#creating-ontology-models
+   *
+   * It is primarily the choice of reasoner, rather than the choice of language
+   * profile.
+   *
+   * @throws Exception
+   */
+  @Test
+  public void createOntologyInOwlDlSpec() throws Exception {
+    OntModel ontology = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
     assertEquals("http://www.w3.org/TR/owl-features/#term_OWLDL", ProfileRegistry.OWL_DL_LANG);
     OntClass animal = ontology.createClass(SOURCE + "#animal");
     ontology.createIndividual(SOURCE + "#uma", animal);
