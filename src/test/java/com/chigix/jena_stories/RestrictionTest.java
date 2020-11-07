@@ -28,6 +28,7 @@ import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.ontology.Restriction;
+import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
 import org.junit.Before;
@@ -43,6 +44,7 @@ public class RestrictionTest {
   private static final String NS = "http://chigix.com/else#";
   private String expectedTwoRestrictionCreateResult;
   private String expectedHasValueExpression;
+  private String expectedHasValueDebug;
 
   @Before
   public void setUp() {
@@ -52,6 +54,9 @@ public class RestrictionTest {
           StandardCharsets.UTF_8);
       expectedHasValueExpression = IOUtils.toString(
           getClass().getClassLoader().getResourceAsStream("snapshot-hasvalue-expression.owl"),
+          StandardCharsets.UTF_8);
+      expectedHasValueDebug = IOUtils.toString(
+          getClass().getClassLoader().getResourceAsStream("snapshot-hasvalue-debug.owl"),
           StandardCharsets.UTF_8);
     } catch (IOException e) {
       e.printStackTrace();
@@ -136,7 +141,7 @@ public class RestrictionTest {
    */
   @Test
   public void testHasValueRestriction() {
-    OntModel m = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
+    OntModel m = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_RULE_INF);
     OntClass MathCourse = m.createClass(NS + "mathCourse");
     ObjectProperty isTaughtBy = m.createObjectProperty(NS + "isTaughtBy");
     Resource davidBillington = m.createResource(NS + "949352");
@@ -148,5 +153,17 @@ public class RestrictionTest {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     m.write(baos);
     assertThat(baos.toString(), equalTo(expectedHasValueExpression));
+
+    // https://jena.apache.org/documentation/ontology/#additional-notes
+    // snapshot the contents of ont model for debug
+    Model snapshot = ModelFactory.createDefaultModel();
+    snapshot.add(m);
+
+    ByteArrayOutputStream snapshotResult = new ByteArrayOutputStream();
+    snapshot.write(snapshotResult);
+    assertThat(snapshotResult.toString(),
+        isSimilarTo(expectedHasValueDebug)
+            .withNodeMatcher(new DefaultNodeMatcher(ElementSelectors.byName)));
   }
+
 }
