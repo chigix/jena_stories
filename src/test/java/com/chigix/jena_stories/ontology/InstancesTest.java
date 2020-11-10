@@ -1,4 +1,4 @@
-package com.chigix.jena_stories;
+package com.chigix.jena_stories.ontology;
 
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
