@@ -22,6 +22,9 @@ import org.junit.Test;
 
 /**
  * https://jena.apache.org/documentation/ontology/#ontology-meta-data
+ *
+ * Related to the post:
+ * https://stackoverflow.com/questions/27727845/what-does-owlontology-rdfabout-xmlbase-in-an-ontology-mean
  */
 public class MetaHeaderTest {
 
@@ -29,7 +32,7 @@ public class MetaHeaderTest {
   private String expectedOntologyImportResult;
 
   @Before
-  public void setUP() {
+  public void setUp() {
     try {
       this.expectedDublinCoreMetaResult = IOUtils.toString(
           getClass().getClassLoader().getResourceAsStream("snapshot-dublin-core-metadata.owl"),
