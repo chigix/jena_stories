@@ -49,6 +49,8 @@ public class DistinctionTest {
     // copy the existing base model.
     // The Reasoner attached to an ontology model is specified through the `OntModelSpec`.
     // https://jena.apache.org/documentation/ontology/#ontology-inference-overview
+    // Other inference models are available as well:
+    // https://jena.apache.org/documentation/inference/index.html#generalExamples
     OntModel inf = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, base);
 
     // list the inferred types
