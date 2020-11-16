@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE owl [
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+]>
 <rdf:RDF
   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -33,7 +39,7 @@
       <owl:Class rdf:about="#product" />
       <owl:Restriction>
         <owl:onProperty rdf:resource="#manufactured_by" />
-        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+        <owl:hasValue rdf:datatype="&xsd;string">
           Hewlett Packard
         </owl:hasValue>
       </owl:Restriction>
@@ -70,7 +76,7 @@
       <owl:Class rdf:about="#printer" />
       <owl:Restriction>
         <owl:onProperty rdf:resource="#printingTechnology" />
-        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+        <owl:hasValue rdf:datatype="&xsd;string">
           laser jet
         </owl:hasValue>
       </owl:Restriction>
@@ -94,13 +100,13 @@
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty rdf:resource="#printingSpeed" />
-        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8ppm</owl:hasValue>
+        <owl:hasValue rdf:datatype="&xsd;string">8ppm</owl:hasValue>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty rdf:resource="#printingResolution" />
-        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">600dpi</owl:hasValue>
+        <owl:hasValue rdf:datatype="&xsd;string">600dpi</owl:hasValue>
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
@@ -113,7 +119,7 @@
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty rdf:resource="#price" />
-        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">450</owl:hasValue>
+        <owl:hasValue rdf:datatype="&xsd;integer">450</owl:hasValue>
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
@@ -126,33 +132,33 @@
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty rdf:resource="#price" />
-        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">350</owl:hasValue>
+        <owl:hasValue rdf:datatype="&xsd;integer">350</owl:hasValue>
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
 
   <owl:DatatypeProperty rdf:ID="manufactured_by">
     <rdfs:domain rdf:resource="#product" />
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:range rdf:resource="&xsd;string" />
   </owl:DatatypeProperty>
 
   <owl:DatatypeProperty rdf:ID="price">
     <rdfs:domain rdf:resource="#product" />
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger" />
+    <rdfs:range rdf:resource="&xsd;nonNegativeInteger" />
   </owl:DatatypeProperty>
 
   <owl:DatatypeProperty rdf:ID="printingTechnology">
     <rdfs:domain rdf:resource="#printer" />
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:range rdf:resource="&xsd;string" />
   </owl:DatatypeProperty>
 
   <owl:DatatypeProperty rdf:ID="printingResolution">
     <rdfs:domain rdf:resource="#printer" />
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:range rdf:resource="&xsd;string" />
   </owl:DatatypeProperty>
 
   <owl:DatatypeProperty rdf:ID="printingSpeed">
     <rdfs:domain rdf:resource="#printer" />
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:range rdf:resource="&xsd;string" />
   </owl:DatatypeProperty>
 </rdf:RDF>
