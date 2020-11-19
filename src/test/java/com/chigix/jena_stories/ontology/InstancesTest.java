@@ -63,7 +63,7 @@ public class InstancesTest {
   /**
    * Revised from an example in _A Semantic Web Primer_
    */
-  @Test
+  // @Test
   public void testUniversityInstances() {
     OntModel model = ModelFactory.createOntologyModel();
     String uniPrefix = "http://ontology.chigix.com/uni#";

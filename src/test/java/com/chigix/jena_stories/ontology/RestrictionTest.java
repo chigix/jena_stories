@@ -139,7 +139,7 @@ public class RestrictionTest {
   /**
    * Example from A Semantic Primer
    */
-  @Test
+  // @Test
   public void testHasValueRestriction() {
     OntModel m = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_RULE_INF);
     OntClass MathCourse = m.createClass(NS + "mathCourse");
@@ -159,6 +159,7 @@ public class RestrictionTest {
     Model snapshot = ModelFactory.createDefaultModel();
     snapshot.add(m);
 
+    // @TODO: simularity calculation might be more suitalble here
     ByteArrayOutputStream snapshotResult = new ByteArrayOutputStream();
     snapshot.write(snapshotResult);
     assertThat(snapshotResult.toString(),

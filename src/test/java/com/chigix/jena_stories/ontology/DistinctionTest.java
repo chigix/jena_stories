@@ -3,7 +3,9 @@ package com.chigix.jena_stories.ontology;
 import static org.apache.jena.rdf.model.ModelFactory.createOntologyModel;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.hamcrest.Matchers.hasItemInArray;
 
 import java.util.Iterator;
 
@@ -45,9 +47,11 @@ public class DistinctionTest {
     Iterator<Resource> iterCarnivoreAssertedTypes = carnivore1.listRDFTypes(false);
     assertEquals(NS + "carnivore", iterCarnivoreAssertedTypes.next().getURI());
 
-    // Use a recipe object to create an ontology model with `optimised rule-based reasoner`
+    // Use a recipe object to create an ontology model with `optimised rule-based
+    // reasoner`
     // copy the existing base model.
-    // The Reasoner attached to an ontology model is specified through the `OntModelSpec`.
+    // The Reasoner attached to an ontology model is specified through the
+    // `OntModelSpec`.
     // https://jena.apache.org/documentation/ontology/#ontology-inference-overview
     // Other inference models are available as well:
     // https://jena.apache.org/documentation/inference/index.html#generalExamples
@@ -97,7 +101,13 @@ public class DistinctionTest {
             "http://www.w3.org/2000/01/rdf-schema#Class" },
         intersectionStmts.nextStatement().getObject().toString()));
     assertEquals(NS + "animal", iterCarnivoreInferredTypes.next().getURI());
-    assertEquals("http://www.w3.org/2000/01/rdf-schema#Resource", iterCarnivoreInferredTypes.next().getURI());
-    assertEquals("http://www.w3.org/2002/07/owl#Thing", iterCarnivoreInferredTypes.next().getURI());
+    assertThat(new String[] {
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.w3.org/2000/01/rdf-schema#Resource"
+    }, hasItemInArray(iterCarnivoreInferredTypes.next().getURI()));
+    assertThat(new String[] {
+        "http://www.w3.org/2002/07/owl#Thing",
+        "http://www.w3.org/2000/01/rdf-schema#Resource"
+    }, hasItemInArray(iterCarnivoreInferredTypes.next().getURI()));
   }
 }

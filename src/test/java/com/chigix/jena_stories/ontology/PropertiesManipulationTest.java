@@ -55,6 +55,9 @@ public class PropertiesManipulationTest {
     }
   }
 
+  /**
+   * `owl:ObjectProperty` is a special case of `rdf:Property`.
+   */
   @Test
   public void testOntProperties() {
     // A property in an ontology model is an extension of the core Jena API class
@@ -106,7 +109,7 @@ public class PropertiesManipulationTest {
     assertEquals(NS + "printingSpec", printingTech.getSuperProperty().getURI());
   }
 
-  @Test
+  // @Test
   public void testFunctionalProperty() {
     OntModel m = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
     m.read(getClass().getClassLoader().getResourceAsStream("african-wildlife.owl"), NS);
@@ -114,6 +117,8 @@ public class PropertiesManipulationTest {
     assertFalse(property.isFunctionalProperty());
     FunctionalProperty newFuncProp = property.convertToFunctionalProperty();
     assertTrue(newFuncProp.isFunctionalProperty());
+
+    // @TODO: Use a smaller test case ?
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     m.write(baos);
     assertEquals(baos.toString(), expectedConvertedFunctionalPropertyResult);
