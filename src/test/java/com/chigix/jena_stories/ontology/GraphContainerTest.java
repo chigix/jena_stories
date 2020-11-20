@@ -22,6 +22,7 @@ import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.vocabulary.VCARD;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.xmlunit.diff.DefaultNodeMatcher;
 import org.xmlunit.diff.ElementSelectors;
@@ -45,7 +46,8 @@ public class GraphContainerTest {
     }
   }
 
-  // @Test
+  @Test
+  @Ignore
   public void testBagModel() {
     Model model = ModelFactory.createDefaultModel();
     model.read(RDFDataMgr.open("vc-db-1.rdf"), "");

@@ -32,6 +32,7 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.xmlunit.diff.DefaultNodeMatcher;
 import org.xmlunit.diff.ElementSelectors;
@@ -139,7 +140,8 @@ public class RestrictionTest {
   /**
    * Example from A Semantic Primer
    */
-  // @Test
+  @Test
+  @Ignore
   public void testHasValueRestriction() {
     OntModel m = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_RULE_INF);
     OntClass MathCourse = m.createClass(NS + "mathCourse");

@@ -23,6 +23,7 @@ import org.apache.jena.riot.Lang;
 import org.apache.jena.vocabulary.XSD;
 import org.hamcrest.Matchers;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -109,7 +110,8 @@ public class PropertiesManipulationTest {
     assertEquals(NS + "printingSpec", printingTech.getSuperProperty().getURI());
   }
 
-  // @Test
+  @Test
+  @Ignore
   public void testFunctionalProperty() {
     OntModel m = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
     m.read(getClass().getClassLoader().getResourceAsStream("african-wildlife.owl"), NS);

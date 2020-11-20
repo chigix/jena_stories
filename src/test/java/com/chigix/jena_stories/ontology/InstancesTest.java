@@ -17,6 +17,7 @@ import org.apache.jena.ontology.OntModel;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Property;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.xmlunit.diff.DefaultNodeMatcher;
 import org.xmlunit.diff.ElementSelectors;
@@ -63,7 +64,8 @@ public class InstancesTest {
   /**
    * Revised from an example in _A Semantic Web Primer_
    */
-  // @Test
+  @Test
+  @Ignore
   public void testUniversityInstances() {
     OntModel model = ModelFactory.createOntologyModel();
     String uniPrefix = "http://ontology.chigix.com/uni#";
