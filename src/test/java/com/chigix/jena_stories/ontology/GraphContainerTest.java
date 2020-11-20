@@ -45,7 +45,7 @@ public class GraphContainerTest {
     }
   }
 
-  @Test
+  // @Test
   public void testBagModel() {
     Model model = ModelFactory.createDefaultModel();
     model.read(RDFDataMgr.open("vc-db-1.rdf"), "");
