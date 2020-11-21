@@ -1,18 +1,22 @@
 package com.chigix.jena_stories.ontology;
 
+import static org.apache.jena.rdf.model.ModelFactory.createOntologyModel;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.hamcrest.Matchers.equalTo;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.jena.ontology.AnnotationProperty;
 import org.apache.jena.ontology.DatatypeProperty;
 import org.apache.jena.ontology.FunctionalProperty;
+import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
@@ -21,7 +25,6 @@ import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.vocabulary.XSD;
-import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -34,10 +37,11 @@ import org.junit.Test;
  */
 public class PropertiesManipulationTest {
 
-  private static final String NS = "http://chigix.com/else#";
+  private static final String NS = "urn:x-hp-jena:eg/";
   private String expectedOntologyPropertyResult;
   private String expectedConvertedFunctionalPropertyResult;
   private String expectedSpecialProperties;
+  private String expectedAnnotationUsage;
 
   @Before
   public void setUp() {
@@ -50,6 +54,9 @@ public class PropertiesManipulationTest {
           StandardCharsets.UTF_8);
       this.expectedSpecialProperties = IOUtils.toString(
           getClass().getClassLoader().getResourceAsStream("snapshot-special-properties.owl"),
+          StandardCharsets.UTF_8);
+      this.expectedAnnotationUsage = IOUtils.toString(
+          getClass().getClassLoader().getResourceAsStream("snapshot-annotation-usage.owl"),
           StandardCharsets.UTF_8);
     } catch (IOException e) {
       e.printStackTrace();
@@ -92,26 +99,26 @@ public class PropertiesManipulationTest {
     OntModel m = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
     m.read(getClass().getClassLoader().getResourceAsStream("printer-ontology.owl"), NS);
     // NOTE: xmlns defined in owl file would be overridden here
-    assertNull(m.getDatatypeProperty("http://ontology.chigix.com/printer.owl#manufactured_by"));
-    DatatypeProperty printingTech = m.getDatatypeProperty("http://chigix.com/else#printingTechnology");
+    assertNull(m.getDatatypeProperty(NS + "manufactured_by"));
+    DatatypeProperty printingTech = m.getDatatypeProperty(NS + "#printingTechnology");
     assertTrue(printingTech instanceof DatatypeProperty);
 
-    DatatypeProperty printingRes = m.getDatatypeProperty("http://chigix.com/else#printingResolution");
+    DatatypeProperty printingRes = m.getDatatypeProperty(NS + "#printingResolution");
 
     // Add a super-property
-    DatatypeProperty spec = m.createDatatypeProperty(NS + "printingSpec");
-    spec.addDomain(m.getOntClass(NS + "printer"));
+    DatatypeProperty spec = m.createDatatypeProperty(NS + "#printingSpec");
+    spec.addDomain(m.getOntClass(NS + "#printer"));
     spec.addRange(XSD.normalizedString);
 
     // Generalize the separate properties
     spec.addSubProperty(printingTech);
     spec.addSubProperty(printingRes);
 
-    assertEquals(NS + "printingSpec", printingTech.getSuperProperty().getURI());
+    assertEquals(NS + "#printingSpec", printingTech.getSuperProperty().getURI());
   }
 
   @Test
-  @Ignore
+  @Ignore("Build up a small trivial set to make it easy to test")
   public void testFunctionalProperty() {
     OntModel m = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
     m.read(getClass().getClassLoader().getResourceAsStream("african-wildlife.owl"), NS);
@@ -130,7 +137,7 @@ public class PropertiesManipulationTest {
   public void testTransitiveProperty() {
     OntModel m = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_RULE_INF);
     m.read(getClass().getClassLoader().getResourceAsStream("african-wildlife.owl"), NS);
-    ObjectProperty isPartOf = m.getObjectProperty(NS + "is_part_of");
+    ObjectProperty isPartOf = m.getObjectProperty(NS + "#is_part_of");
 
     // Special Properties are all ObjectProperties
     assertTrue(isPartOf.isTransitiveProperty());
@@ -150,7 +157,38 @@ public class PropertiesManipulationTest {
     m.createInverseFunctionalProperty(NS + "isTheSocialSecurityNumberfor");
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     m.write(baos);
-    assertThat(baos.toString(), Matchers.equalTo(expectedSpecialProperties));
+    assertThat(baos.toString(), equalTo(expectedSpecialProperties));
+  }
+
+  /**
+   * Usage of AnnotationProperty
+   * https://jena.apache.org/documentation/ontology/#object-and-datatype-properties
+   * https://jena.apache.org/documentation/javadoc/jena/org/apache/jena/ontology/AnnotationProperty.html
+   * https://www.w3.org/TR/owl-ref/#Annotations
+   */
+  @Test
+  public void testAnnotationProperty() {
+    OntModel base = createOntologyModel(OntModelSpec.OWL_MEM);
+    OntClass clsAnimal = base.createClass(NS + "animal");
+    OntClass clsHerbivore = base.createClass(NS + "herbivore");
+    OntClass clsGiraffe = base.createClass(NS + "giraffe");
+    clsGiraffe.setSuperClass(clsHerbivore);
+    clsHerbivore.setSuperClass(clsAnimal);
+
+    // Although illegal, it is not errored in Jena
+    AnnotationProperty label = base.createAnnotationProperty(NS + "label");
+    label.setDomain(clsHerbivore);
+    label.setRange(XSD.normalizedString);
+    Individual baseGiraffe = base.createIndividual(NS + "giraffe1", clsGiraffe);
+
+    // Direct assigning on individual is legal
+    baseGiraffe.addProperty(label, "Giraffe Label", "en");
+    OntModel inf = createOntologyModel(OntModelSpec.OWL_DL_MEM_RULE_INF, base);
+    Individual inferredGiraffe = inf.getIndividual(NS + "giraffe1");
+    assertThat(inferredGiraffe.getProperty(label).getString(), equalTo("Giraffe Label"));
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    base.write(baos);
+    assertThat(baos.toString(), equalTo(expectedAnnotationUsage));
   }
 
 }

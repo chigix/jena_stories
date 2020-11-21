@@ -3,11 +3,11 @@
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
-  <owl:SymmetricProperty rdf:about="http://chigix.com/else#hasSameGradeAs">
-    <rdfs:range rdf:resource="http://chigix.com/else#student"/>
-    <rdfs:domain rdf:resource="http://chigix.com/else#student"/>
+  <owl:SymmetricProperty rdf:about="urn:x-hp-jena:eg/hasSameGradeAs">
+    <rdfs:range rdf:resource="urn:x-hp-jena:eg/student"/>
+    <rdfs:domain rdf:resource="urn:x-hp-jena:eg/student"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </owl:SymmetricProperty>
-  <owl:InverseFunctionalProperty rdf:about="http://chigix.com/else#isTheSocialSecurityNumberfor"/>
+  <owl:InverseFunctionalProperty rdf:about="urn:x-hp-jena:eg/isTheSocialSecurityNumberfor"/>
 </rdf:RDF>

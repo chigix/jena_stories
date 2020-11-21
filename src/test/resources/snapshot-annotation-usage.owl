@@ -1,0 +1,24 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:j.0="urn:x-hp-jena:eg/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Class rdf:about="urn:x-hp-jena:eg/giraffe">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:x-hp-jena:eg/herbivore"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="urn:x-hp-jena:eg/herbivore">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="urn:x-hp-jena:eg/animal"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:AnnotationProperty rdf:about="urn:x-hp-jena:eg/label">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#normalizedString"/>
+    <rdfs:domain rdf:resource="urn:x-hp-jena:eg/herbivore"/>
+  </owl:AnnotationProperty>
+  <j.0:giraffe rdf:about="urn:x-hp-jena:eg/giraffe1">
+    <j.0:label xml:lang="en">Giraffe Label</j.0:label>
+  </j.0:giraffe>
+</rdf:RDF>

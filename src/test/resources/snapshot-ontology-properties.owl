@@ -3,13 +3,13 @@
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
-  <owl:Class rdf:about="http://chigix.com/else#OrganizedEvent"/>
-  <owl:ObjectProperty rdf:about="http://chigix.com/else#hasProgramme">
-    <rdfs:domain rdf:resource="http://chigix.com/else#OrganizedEvent"/>
+  <owl:Class rdf:about="urn:x-hp-jena:eg/OrganizedEvent"/>
+  <owl:ObjectProperty rdf:about="urn:x-hp-jena:eg/hasProgramme">
+    <rdfs:domain rdf:resource="urn:x-hp-jena:eg/OrganizedEvent"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </owl:ObjectProperty>
-  <rdf:Property rdf:about="http://chigix.com/else#body">
+  <rdf:Property rdf:about="urn:x-hp-jena:eg/body">
     <rdfs:label xml:lang="en">has programme</rdfs:label>
-    <rdfs:range rdf:resource="http://chigix.com/else#hasProgramme"/>
+    <rdfs:range rdf:resource="urn:x-hp-jena:eg/hasProgramme"/>
   </rdf:Property>
 </rdf:RDF>
