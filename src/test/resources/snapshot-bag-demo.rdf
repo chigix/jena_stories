@@ -3,7 +3,7 @@
     xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
   <rdf:Bag>
     <rdf:li>
-      <rdf:Description rdf:about="file:///home/richard/Projects/JenaLab/jena_stories/RebeccaSmith">
+      <rdf:Description rdf:about="urn:x-hp-jena:eg/RebeccaSmith">
         <vCard:N rdf:parseType="Resource">
           <vCard:Given>Rebecca</vCard:Given>
           <vCard:Family>Smith</vCard:Family>
@@ -12,7 +12,7 @@
       </rdf:Description>
     </rdf:li>
     <rdf:li>
-      <rdf:Description rdf:about="file:///home/richard/Projects/JenaLab/jena_stories/JohnSmith">
+      <rdf:Description rdf:about="urn:x-hp-jena:eg/JohnSmith">
         <vCard:N rdf:parseType="Resource">
           <vCard:Given>John</vCard:Given>
           <vCard:Family>Smith</vCard:Family>
