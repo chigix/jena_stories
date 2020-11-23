@@ -4,12 +4,10 @@ import static org.apache.jena.rdf.model.ModelFactory.createOntologyModel;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 import static org.hamcrest.Matchers.in;
 
 import java.util.Iterator;
 
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
@@ -72,34 +70,34 @@ public class DistinctionTest {
     assertEquals(NS + "animal", intersectionStmts.nextStatement().getObject().toString());
     // <owl:Restriction>
     intersectionStmts = intersection.listProperties(inf.getProperty("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"));
-    assertTrue(ArrayUtils.contains(
-        new String[] { "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2000/01/rdf-schema#Resource",
-            "http://www.w3.org/2000/01/rdf-schema#Resource",
-            "http://www.w3.org/2002/07/owl#Class",
-            "http://www.w3.org/2000/01/rdf-schema#Class" },
-        intersectionStmts.nextStatement().getObject().toString()));
-    assertTrue(ArrayUtils.contains(
-        new String[] { "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2000/01/rdf-schema#Resource",
-            "http://www.w3.org/2000/01/rdf-schema#Resource",
-            "http://www.w3.org/2002/07/owl#Class",
-            "http://www.w3.org/2000/01/rdf-schema#Class" },
-        intersectionStmts.nextStatement().getObject().toString()));
-    assertTrue(ArrayUtils.contains(
-        new String[] { "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2000/01/rdf-schema#Resource",
-            "http://www.w3.org/2000/01/rdf-schema#Resource",
-            "http://www.w3.org/2002/07/owl#Class",
-            "http://www.w3.org/2000/01/rdf-schema#Class" },
-        intersectionStmts.nextStatement().getObject().toString()));
-    assertTrue(ArrayUtils.contains(
-        new String[] { "http://www.w3.org/2002/07/owl#Restriction",
-            "http://www.w3.org/2000/01/rdf-schema#Resource",
-            "http://www.w3.org/2000/01/rdf-schema#Resource",
-            "http://www.w3.org/2002/07/owl#Class",
-            "http://www.w3.org/2000/01/rdf-schema#Class" },
-        intersectionStmts.nextStatement().getObject().toString()));
+    assertThat(intersectionStmts.nextStatement().getObject().toString(), in(new String[] {
+        "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2000/01/rdf-schema#Resource",
+        "http://www.w3.org/2000/01/rdf-schema#Resource",
+        "http://www.w3.org/2002/07/owl#Class",
+        "http://www.w3.org/2000/01/rdf-schema#Class"
+    }));
+    assertThat(intersectionStmts.nextStatement().getObject().toString(), in(new String[] {
+        "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2000/01/rdf-schema#Resource",
+        "http://www.w3.org/2000/01/rdf-schema#Resource",
+        "http://www.w3.org/2002/07/owl#Class",
+        "http://www.w3.org/2000/01/rdf-schema#Class"
+    }));
+    assertThat(intersectionStmts.nextStatement().getObject().toString(), in(new String[] {
+        "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2000/01/rdf-schema#Resource",
+        "http://www.w3.org/2000/01/rdf-schema#Resource",
+        "http://www.w3.org/2002/07/owl#Class",
+        "http://www.w3.org/2000/01/rdf-schema#Class"
+    }));
+    assertThat(intersectionStmts.nextStatement().getObject().toString(), in(new String[] {
+        "http://www.w3.org/2002/07/owl#Restriction",
+        "http://www.w3.org/2000/01/rdf-schema#Resource",
+        "http://www.w3.org/2000/01/rdf-schema#Resource",
+        "http://www.w3.org/2002/07/owl#Class",
+        "http://www.w3.org/2000/01/rdf-schema#Class"
+    }));
     assertEquals(NS + "animal", iterCarnivoreInferredTypes.next().getURI());
     assertThat(iterCarnivoreInferredTypes.next().getURI(), in(new String[] {
         "http://www.w3.org/2002/07/owl#Thing",

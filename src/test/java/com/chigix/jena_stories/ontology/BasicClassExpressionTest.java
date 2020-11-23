@@ -6,8 +6,10 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
-import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.in;
+import static org.hamcrest.Matchers.not;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -15,7 +17,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.jena.ontology.EnumeratedClass;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
@@ -24,7 +25,6 @@ import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.ontology.OntResource;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.riot.RDFDataMgr;
-import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -70,11 +70,11 @@ public class BasicClassExpressionTest {
     // A shorten style of calling
     OntClass plant = model.getOntClass(NS + "plant");
     for (Iterator<OntClass> iterSubClasses = plant.listSubClasses(); iterSubClasses.hasNext();) {
-      OntClass children = iterSubClasses.next();
-      assertTrue(ArrayUtils.contains(new String[] {
+      OntClass child = iterSubClasses.next();
+      assertThat(child.getURI(), in(new String[] {
           "http://wwww.eswc2006.org/technologies/ontology#tasty_plant",
           "http://wwww.eswc2006.org/technologies/ontology#tree",
-      }, children.getURI()));
+      }));
     }
   }
 
@@ -122,13 +122,13 @@ public class BasicClassExpressionTest {
 
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     model.write(baos);
-    assertThat(baos.toString(), Matchers.equalTo(expectedEnumeration));
+    assertThat(baos.toString(), equalTo(expectedEnumeration));
 
     Iterator<?> i = weekdays.listOneOf();
-    assertThat(((OntResource) i.next()).getURI(), Matchers.equalTo(NS + "Monday"));
+    assertThat(((OntResource) i.next()).getURI(), equalTo(NS + "Monday"));
     assertThat(i.next(), not(instanceOf(Individual.class)));
-    assertThat(((OntResource) i.next()).getURI(), Matchers.equalTo(NS + "Wednesday"));
-    assertThat(((OntResource) i.next()).getURI(), Matchers.equalTo(NS + "Thursday"));
-    assertThat(((OntResource) i.next()).getURI(), Matchers.equalTo(NS + "Friday"));
+    assertThat(((OntResource) i.next()).getURI(), equalTo(NS + "Wednesday"));
+    assertThat(((OntResource) i.next()).getURI(), equalTo(NS + "Thursday"));
+    assertThat(((OntResource) i.next()).getURI(), equalTo(NS + "Friday"));
   }
 }
