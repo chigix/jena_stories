@@ -1,0 +1,259 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix fn:    <http://www.w3.org/2005/xpath-functions#> .
+@prefix :      <https://swwo.linked.data.world/d/chapter-3-example-queries/> .
+@prefix ch3:   <https://swwo.linked.data.world/d/chapter-3-examples/> .
+@prefix lit:   <http://www.workingontologist.org/Examples/Chapter3/shakespeare#> .
+@prefix geo:   <http://www.workingontologist.org/Examples/Chapter3/geography#> .
+@prefix bio:   <http://www.workingontologist.org/Examples/Chapter3/biography#> .
+
+<http://www.workingontologist.org/Examples/Chapter3/Product>
+        a                owl:Ontology ;
+        owl:versionInfo  "Created with TopBraid Spreadsheet converter" .
+
+<http://www.workingontologist.org/Examples/Chapter3/Product#Product2>
+        a           <http://www.workingontologist.org/Examples/Chapter3/Product#Product> ;
+        rdfs:label  "Product 2" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Available>
+                "4" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Division>
+                "Manufacturing support" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_ID>
+                "2" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Manufacture_Location>
+                "Sacramento" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_ModelNo>
+                "ZX-3P" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Product_Line>
+                "Paper machine" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_SKU>
+                "KD5243" .
+
+<http://www.workingontologist.org/Examples/Chapter3/Product#Product8>
+        a           <http://www.workingontologist.org/Examples/Chapter3/Product#Product> ;
+        rdfs:label  "Product 8" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Available>
+                "4" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Division>
+                "Safety" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_ID>
+                "8" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Manufacture_Location>
+                "Cleveland" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_ModelNo>
+                "SP-1234" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Product_Line>
+                "Safety Valve" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_SKU>
+                "HI4554" .
+
+<http://www.workingontologist.org/Examples/Chapter3/Product#Product_SKU>
+        a            owl:DatatypeProperty ;
+        rdfs:domain  <http://www.workingontologist.org/Examples/Chapter3/Product#Product> ;
+        rdfs:label   "SKU" ;
+        rdfs:range   xsd:string .
+
+rdfs:label  a             owl:AnnotationProperty , rdf:Property ;
+        rdfs:comment      ""@en , "A human-readable name for the subject." ;
+        rdfs:domain       rdfs:Resource ;
+        rdfs:isDefinedBy  <http://www.w3.org/ns/prov-o#> , rdfs: ;
+        rdfs:label        "label" ;
+        rdfs:range        rdfs:Literal .
+
+<http://www.workingontologist.org/Examples/Chapter3/Product#Product1>
+        a           <http://www.workingontologist.org/Examples/Chapter3/Product#Product> ;
+        rdfs:label  "Product 1" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Available>
+                "23" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Division>
+                "Manufacturing support" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_ID>
+                "1" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Manufacture_Location>
+                "Sacramento" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_ModelNo>
+                "ZX-3" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Product_Line>
+                "Paper machine" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_SKU>
+                "FB3524" .
+
+<http://www.workingontologist.org/Examples/Chapter3/Product#Product7>
+        a           <http://www.workingontologist.org/Examples/Chapter3/Product#Product> ;
+        rdfs:label  "Product 7" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Available>
+                "100" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Division>
+                "Accessories" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_ID>
+                "7" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Manufacture_Location>
+                "Hong Kong" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_ModelNo>
+                "DBB-12" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Product_Line>
+                "Monitor" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_SKU>
+                "ND5520" .
+
+<http://www.workingontologist.org/Examples/Chapter3/Product#Product_Product_Line>
+        a            owl:DatatypeProperty ;
+        rdfs:domain  <http://www.workingontologist.org/Examples/Chapter3/Product#Product> ;
+        rdfs:label   "Product Line" ;
+        rdfs:range   xsd:string .
+
+rdf:type  a               rdf:Property ;
+        rdfs:comment      "The subject is an instance of a class." ;
+        rdfs:domain       rdfs:Resource ;
+        rdfs:isDefinedBy  rdf: ;
+        rdfs:label        "type" ;
+        rdfs:range        rdfs:Class .
+
+<http://www.workingontologist.org/Examples/Chapter3/Product#Product_Manufacture_Location>
+        a            owl:DatatypeProperty ;
+        rdfs:domain  <http://www.workingontologist.org/Examples/Chapter3/Product#Product> ;
+        rdfs:label   "Manufacture Location" ;
+        rdfs:range   xsd:string .
+
+<http://www.workingontologist.org/Examples/Chapter3/Product#Product6>
+        a           <http://www.workingontologist.org/Examples/Chapter3/Product#Product> ;
+        rdfs:label  "Product 6" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Available>
+                "0" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Division>
+                "Control Engineering" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_ID>
+                "6" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Manufacture_Location>
+                "Seoul" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_ModelNo>
+                "B-1431" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Product_Line>
+                "Active sensor" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_SKU>
+                "KK3945" .
+
+<http://www.workingontologist.org/Examples/Chapter3/Product#Product_ID>
+        a            owl:DatatypeProperty ;
+        rdfs:domain  <http://www.workingontologist.org/Examples/Chapter3/Product#Product> ;
+        rdfs:label   "ID" ;
+        rdfs:range   xsd:string .
+
+<http://www.workingontologist.org/Examples/Chapter3/Product#Product>
+        a           owl:Class ;
+        rdfs:label  "Product" .
+
+rdfs:range  a             rdf:Property ;
+        rdfs:comment      "A range of the subject property." ;
+        rdfs:domain       rdf:Property ;
+        rdfs:isDefinedBy  rdfs: ;
+        rdfs:label        "range" ;
+        rdfs:range        rdfs:Class .
+
+<http://www.workingontologist.org/Examples/Chapter3/Product#Product5>
+        a           <http://www.workingontologist.org/Examples/Chapter3/Product#Product> ;
+        rdfs:label  "Product 5" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Available>
+                "14" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Division>
+                "Control Engineering" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_ID>
+                "5" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Manufacture_Location>
+                "Elizabeth" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_ModelNo>
+                "B-1430X" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Product_Line>
+                "Feedback line" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_SKU>
+                "CL5934" .
+
+owl:versionInfo  a        owl:AnnotationProperty ;
+        rdfs:comment      "The annotation property that provides version information for an ontology or another OWL construct." ;
+        rdfs:domain       rdfs:Resource ;
+        rdfs:isDefinedBy  owl: ;
+        rdfs:label        "versionInfo" ;
+        rdfs:range        rdfs:Resource .
+
+rdfs:domain  a            rdf:Property ;
+        rdfs:comment      "A domain of the subject property." ;
+        rdfs:domain       rdf:Property ;
+        rdfs:isDefinedBy  rdfs: ;
+        rdfs:label        "domain" ;
+        rdfs:range        rdfs:Class .
+
+<http://www.workingontologist.org/Examples/Chapter3/Product#Product_Available>
+        a            owl:DatatypeProperty ;
+        rdfs:domain  <http://www.workingontologist.org/Examples/Chapter3/Product#Product> ;
+        rdfs:label   "Available" ;
+        rdfs:range   xsd:string .
+
+<http://www.workingontologist.org/Examples/Chapter3/Product#Product4>
+        a           <http://www.workingontologist.org/Examples/Chapter3/Product#Product> ;
+        rdfs:label  "Product 4" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Available>
+                "23" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Division>
+                "Control Engineering" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_ID>
+                "4" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Manufacture_Location>
+                "Elizabeth" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_ModelNo>
+                "B-1430" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Product_Line>
+                "Feedback line" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_SKU>
+                "KS4520" .
+
+<http://www.workingontologist.org/Examples/Chapter3/Product#Product_Division>
+        a            owl:DatatypeProperty ;
+        rdfs:domain  <http://www.workingontologist.org/Examples/Chapter3/Product#Product> ;
+        rdfs:label   "Division" ;
+        rdfs:range   xsd:string .
+
+<http://www.workingontologist.org/Examples/Chapter3/Product#Product3>
+        a           <http://www.workingontologist.org/Examples/Chapter3/Product#Product> ;
+        rdfs:label  "Product 3" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Available>
+                "34" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Division>
+                "Manufacturing support" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_ID>
+                "3" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Manufacture_Location>
+                "Sacramento" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_ModelNo>
+                "ZX-3S" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Product_Line>
+                "Paper machine" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_SKU>
+                "IL4028" .
+
+<http://www.workingontologist.org/Examples/Chapter3/Product#Product9>
+        a           <http://www.workingontologist.org/Examples/Chapter3/Product#Product> ;
+        rdfs:label  "Product 9" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Available>
+                "14" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Division>
+                "Safety" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_ID>
+                "9" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Manufacture_Location>
+                "Cleveland" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_ModelNo>
+                "SPX-1234" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_Product_Line>
+                "Safety Valve" ;
+        <http://www.workingontologist.org/Examples/Chapter3/Product#Product_SKU>
+                "OP5333" .
+
+<http://www.workingontologist.org/Examples/Chapter3/Product#Product_ModelNo>
+        a            owl:DatatypeProperty ;
+        rdfs:domain  <http://www.workingontologist.org/Examples/Chapter3/Product#Product> ;
+        rdfs:label   "ModelNo" ;
+        rdfs:range   xsd:string .

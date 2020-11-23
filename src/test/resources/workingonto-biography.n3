@@ -1,0 +1,50 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix fn:    <http://www.w3.org/2005/xpath-functions#> .
+@prefix :      <https://swwo.linked.data.world/d/chapter-3-example-queries/> .
+@prefix ch3:   <https://swwo.linked.data.world/d/chapter-3-examples/> .
+@prefix lit:   <http://www.workingontologist.org/Examples/Chapter3/shakespeare#> .
+@prefix geo:   <http://www.workingontologist.org/Examples/Chapter3/geography#> .
+@prefix bio:   <http://www.workingontologist.org/Examples/Chapter3/biography#> .
+
+rdf:type  a               rdf:Property ;
+        rdfs:comment      "The subject is an instance of a class." ;
+        rdfs:domain       rdfs:Resource ;
+        rdfs:isDefinedBy  rdf: ;
+        rdfs:label        "type" ;
+        rdfs:range        rdfs:Class .
+
+bio:married  a       owl:ObjectProperty ;
+        rdfs:domain  lit:Person ;
+        rdfs:label   "married" ;
+        rdfs:range   lit:Person .
+
+bio:livedIn  a       owl:ObjectProperty ;
+        rdfs:domain  lit:Person ;
+        rdfs:label   "lived in" ;
+        rdfs:range   lit:Place .
+
+rdfs:range  a             rdf:Property ;
+        rdfs:comment      "A range of the subject property." ;
+        rdfs:domain       rdf:Property ;
+        rdfs:isDefinedBy  rdfs: ;
+        rdfs:label        "range" ;
+        rdfs:range        rdfs:Class .
+
+rdfs:domain  a            rdf:Property ;
+        rdfs:comment      "A domain of the subject property." ;
+        rdfs:domain       rdf:Property ;
+        rdfs:isDefinedBy  rdfs: ;
+        rdfs:label        "domain" ;
+        rdfs:range        rdfs:Class .
+
+rdfs:label  a             owl:AnnotationProperty , rdf:Property ;
+        rdfs:comment      ""@en , "A human-readable name for the subject." ;
+        rdfs:domain       rdfs:Resource ;
+        rdfs:isDefinedBy  <http://www.w3.org/ns/prov-o#> , rdfs: ;
+        rdfs:label        "label" ;
+        rdfs:range        rdfs:Literal .

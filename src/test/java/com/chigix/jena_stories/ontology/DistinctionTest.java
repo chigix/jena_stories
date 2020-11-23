@@ -17,6 +17,7 @@ import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.riot.RDFDataMgr;
+import org.apache.jena.vocabulary.OWL;
 import org.junit.Test;
 
 public class DistinctionTest {
@@ -66,7 +67,7 @@ public class DistinctionTest {
     assertNull(intersection.getURI());
 
     StmtIterator intersectionStmts = intersection
-        .listProperties(inf.getProperty("http://www.w3.org/2002/07/owl#someValuesFrom"));
+        .listProperties(inf.getProperty(OWL.someValuesFrom.getURI()));
     // <owl:Class rdf:about="#animal" />
     assertEquals(NS + "animal", intersectionStmts.nextStatement().getObject().toString());
     // <owl:Restriction>

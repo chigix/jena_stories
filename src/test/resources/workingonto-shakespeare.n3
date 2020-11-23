@@ -1,0 +1,141 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix fn:    <http://www.w3.org/2005/xpath-functions#> .
+@prefix :      <https://swwo.linked.data.world/d/chapter-3-example-queries/> .
+@prefix ch3:   <https://swwo.linked.data.world/d/chapter-3-examples/> .
+@prefix lit:   <http://www.workingontologist.org/Examples/Chapter3/shakespeare#> .
+@prefix geo:   <http://www.workingontologist.org/Examples/Chapter3/geography#> .
+@prefix bio:   <http://www.workingontologist.org/Examples/Chapter3/biography#> .
+
+lit:Shakespeare  a    lit:Author ;
+        rdfs:label    "Shakespeare" ;
+        bio:livedIn   geo:Stratford ;
+        lit:hasChild  ( lit:Susanna lit:Hamnet lit:Judith ) ;
+        lit:wrote     lit:HenryV , lit:AsYouLikeIt , lit:MeasureForMeasure , lit:TheTempest , lit:TwelfthNight , lit:WintersTale , lit:Macbeth , lit:KingLear , lit:LovesLaboursLost , lit:Othello , lit:Hamlet .
+
+lit:KingLear  a     lit:Play ;
+        rdfs:label  "King Lear" .
+
+bio:married  a       owl:ObjectProperty ;
+        rdfs:domain  lit:Person ;
+        rdfs:label   "married" ;
+        rdfs:range   lit:Person .
+
+lit:Author  a            owl:Class ;
+        rdfs:label       "Author" ;
+        rdfs:subClassOf  lit:Person .
+
+lit:Judith  a       lit:Person ;
+        rdfs:label  "Judith" .
+
+lit:TheTempest  a   lit:Play ;
+        rdfs:label  "The Tempest" .
+
+lit:WintersTale  a  lit:Play ;
+        rdfs:label  "A Winters Tale" .
+
+lit:Hamnet  a       lit:Person ;
+        rdfs:label  "Hamnet" .
+
+lit:setIn  a         owl:ObjectProperty ;
+        rdfs:domain  lit:Play ;
+        rdfs:label   "set in" ;
+        rdfs:range   lit:Place .
+
+rdfs:label  a             owl:AnnotationProperty , rdf:Property ;
+        rdfs:comment      ""@en , "A human-readable name for the subject." ;
+        rdfs:domain       rdfs:Resource ;
+        rdfs:isDefinedBy  <http://www.w3.org/ns/prov-o#> , rdfs: ;
+        rdfs:label        "label" ;
+        rdfs:range        rdfs:Literal .
+
+lit:LovesLaboursLost  a  lit:Play ;
+        rdfs:label  "Loves Labours Lost" .
+
+lit:MeasureForMeasure
+        a           lit:Play ;
+        rdfs:label  "Measure for Measure" .
+
+lit:TwelfthNight  a  lit:Play ;
+        rdfs:label  "Twelfth Night" .
+
+rdf:type  a               rdf:Property ;
+        rdfs:comment      "The subject is an instance of a class." ;
+        rdfs:domain       rdfs:Resource ;
+        rdfs:isDefinedBy  rdf: ;
+        rdfs:label        "type" ;
+        rdfs:range        rdfs:Class .
+
+lit:Hamlet  a       lit:Play ;
+        rdfs:label  "Hamlet" .
+
+lit:wrote  a         owl:ObjectProperty ;
+        rdfs:domain  lit:Author ;
+        rdfs:label   "wrote" ;
+        rdfs:range   lit:Play .
+
+lit:Play  a         owl:Class ;
+        rdfs:label  "Play" .
+
+lit:Macbeth  a      lit:Play ;
+        rdfs:label  "Macbeth" ;
+        lit:setIn   geo:Scotland .
+
+rdfs:range  a             rdf:Property ;
+        rdfs:comment      "A range of the subject property." ;
+        rdfs:domain       rdf:Property ;
+        rdfs:isDefinedBy  rdfs: ;
+        rdfs:label        "range" ;
+        rdfs:range        rdfs:Class .
+
+lit:Place  a        owl:Class ;
+        rdfs:label  "Place" .
+
+bio:livedIn  a       owl:ObjectProperty ;
+        rdfs:domain  lit:Person ;
+        rdfs:label   "lived in" ;
+        rdfs:range   lit:Place .
+
+lit:Person  a       owl:Class ;
+        rdfs:label  "Person" .
+
+rdfs:domain  a            rdf:Property ;
+        rdfs:comment      "A domain of the subject property." ;
+        rdfs:domain       rdf:Property ;
+        rdfs:isDefinedBy  rdfs: ;
+        rdfs:label        "domain" ;
+        rdfs:range        rdfs:Class .
+
+lit:AsYouLikeIt  a  lit:Play ;
+        rdfs:label  "As You Like It" .
+
+rdfs:subClassOf  a        rdf:Property ;
+        rdfs:comment      "The subject is a subclass of a class." ;
+        rdfs:domain       rdfs:Class ;
+        rdfs:isDefinedBy  rdfs: ;
+        rdfs:label        "subClassOf" ;
+        rdfs:range        rdfs:Class .
+
+lit:HenryV  a       lit:Play ;
+        rdfs:label  "Henry V" .
+
+lit:Susanna  a      lit:Person ;
+        rdfs:label  "Susanna" .
+
+lit:Othello  a      lit:Play ;
+        rdfs:label  "Othello" .
+
+lit:AnneHathaway  a   lit:Person ;
+        rdfs:label    "Anne Hathaway" ;
+        bio:married   lit:Shakespeare ;
+        lit:hasChild  ( lit:Judith lit:Hamnet lit:Susanna ) .
+
+lit:hasChild  a     owl:ObjectProperty ;
+        rdfs:label  "has child" .
+
+<http://www.workingontologist.org/Examples/Chapter3/shakespeare>
+        a       owl:Ontology .

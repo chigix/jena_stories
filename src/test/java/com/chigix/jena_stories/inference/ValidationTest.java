@@ -13,7 +13,6 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.reasoner.ValidityReport;
 import org.apache.jena.reasoner.ValidityReport.Report;
 import org.apache.jena.riot.RDFDataMgr;
-import org.junit.Before;
 import org.junit.Test;
 
 public class ValidationTest {
