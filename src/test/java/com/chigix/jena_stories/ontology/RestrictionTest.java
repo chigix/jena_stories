@@ -7,8 +7,8 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.in;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.hasItemInArray;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.isA;
@@ -130,7 +130,7 @@ public class RestrictionTest {
       if (r.isAllValuesFromRestriction()) {
         String uri = r.asAllValuesFromRestriction().getAllValuesFrom().getURI();
         assertEquals(NS + "eats", r.getOnProperty().getURI());
-        assertThat(new String[] { NS + "leaf", NS + "herbivore", null }, hasItemInArray(uri));
+        assertThat(uri, in(new String[] { NS + "leaf", NS + "herbivore", null }));
         continue;
       }
       fail();
@@ -141,7 +141,7 @@ public class RestrictionTest {
    * Example from A Semantic Primer
    */
   @Test
-  @Ignore
+  @Ignore("Similarity calculation might be more suitalble instead of XML compare here")
   public void testHasValueRestriction() {
     OntModel m = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_RULE_INF);
     OntClass MathCourse = m.createClass(NS + "mathCourse");
@@ -161,7 +161,6 @@ public class RestrictionTest {
     Model snapshot = ModelFactory.createDefaultModel();
     snapshot.add(m);
 
-    // @TODO: simularity calculation might be more suitalble here
     ByteArrayOutputStream snapshotResult = new ByteArrayOutputStream();
     snapshot.write(snapshotResult);
     assertThat(snapshotResult.toString(),

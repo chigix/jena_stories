@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
-import static org.hamcrest.Matchers.hasItemInArray;
+import static org.hamcrest.Matchers.in;
 
 import java.util.Iterator;
 
@@ -14,7 +14,6 @@ import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
-import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.riot.RDFDataMgr;
@@ -55,7 +54,7 @@ public class DistinctionTest {
     // https://jena.apache.org/documentation/ontology/#ontology-inference-overview
     // Other inference models are available as well:
     // https://jena.apache.org/documentation/inference/index.html#generalExamples
-    OntModel inf = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, base);
+    OntModel inf = createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF, base);
 
     // list the inferred types
     Individual carnivore1Infered = inf.getIndividual(NS + "carnivore1");
@@ -101,13 +100,13 @@ public class DistinctionTest {
             "http://www.w3.org/2000/01/rdf-schema#Class" },
         intersectionStmts.nextStatement().getObject().toString()));
     assertEquals(NS + "animal", iterCarnivoreInferredTypes.next().getURI());
-    assertThat(new String[] {
+    assertThat(iterCarnivoreInferredTypes.next().getURI(), in(new String[] {
         "http://www.w3.org/2002/07/owl#Thing",
         "http://www.w3.org/2000/01/rdf-schema#Resource"
-    }, hasItemInArray(iterCarnivoreInferredTypes.next().getURI()));
-    assertThat(new String[] {
+    }));
+    assertThat(iterCarnivoreInferredTypes.next().getURI(), in(new String[] {
         "http://www.w3.org/2002/07/owl#Thing",
         "http://www.w3.org/2000/01/rdf-schema#Resource"
-    }, hasItemInArray(iterCarnivoreInferredTypes.next().getURI()));
+    }));
   }
 }
