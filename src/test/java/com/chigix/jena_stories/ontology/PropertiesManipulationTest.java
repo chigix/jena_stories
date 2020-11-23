@@ -178,7 +178,7 @@ public class PropertiesManipulationTest {
     // Although illegal, it is not errored in Jena
     AnnotationProperty label = base.createAnnotationProperty(NS + "label");
     label.setDomain(clsHerbivore);
-    label.setRange(XSD.normalizedString);
+    label.setRange(XSD.xstring);
     Individual baseGiraffe = base.createIndividual(NS + "giraffe1", clsGiraffe);
 
     // Direct assigning on individual is legal
