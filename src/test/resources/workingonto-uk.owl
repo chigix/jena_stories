@@ -1,0 +1,100 @@
+<rdf:RDF
+    xmlns:ch3="https://swwo.linked.data.world/d/chapter-3-examples/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns="https://swwo.linked.data.world/d/chapter-3-example-queries/"
+    xmlns:bio="http://www.workingontologist.org/Examples/Chapter3/biography#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:geo="http://www.workingontologist.org/Examples/Chapter3/geography#"
+    xmlns:lit="http://www.workingontologist.org/Examples/Chapter3/shakespeare#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" > 
+  <rdf:Description rdf:about="http://www.workingontologist.org/Examples/Chapter3/geography#IsleOfMan">
+    <geo:partOf rdf:resource="http://www.workingontologist.org/Examples/Chapter3/geography#UK"/>
+    <rdfs:label>Isle of Man</rdfs:label>
+    <rdf:type rdf:resource="http://www.workingontologist.org/Examples/Chapter3/shakespeare#Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.workingontologist.org/Examples/Chapter3/geography#Stratford">
+    <geo:isIn rdf:resource="http://www.workingontologist.org/Examples/Chapter3/geography#England"/>
+    <rdfs:label>Stratford</rdfs:label>
+    <rdf:type rdf:resource="http://www.workingontologist.org/Examples/Chapter3/shakespeare#Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label>type</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:comment>The subject is an instance of a class.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.workingontologist.org/Examples/Chapter3/geography#England">
+    <geo:partOf rdf:resource="http://www.workingontologist.org/Examples/Chapter3/geography#UK"/>
+    <rdfs:label>England</rdfs:label>
+    <rdf:type rdf:resource="http://www.workingontologist.org/Examples/Chapter3/shakespeare#Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.workingontologist.org/Examples/Chapter3/geography#UK">
+    <rdfs:label>UK</rdfs:label>
+    <rdf:type rdf:resource="http://www.workingontologist.org/Examples/Chapter3/shakespeare#Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2000/01/rdf-schema#range">
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label>range</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/01/rdf-schema#"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>A range of the subject property.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.workingontologist.org/Examples/Chapter3/geography#Scotland">
+    <geo:partOf rdf:resource="http://www.workingontologist.org/Examples/Chapter3/geography#UK"/>
+    <rdfs:label>Scotland</rdfs:label>
+    <rdf:type rdf:resource="http://www.workingontologist.org/Examples/Chapter3/shakespeare#Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.workingontologist.org/Examples/Chapter3/geography#NorthernIreland">
+    <geo:partOf rdf:resource="http://www.workingontologist.org/Examples/Chapter3/geography#UK"/>
+    <rdfs:label>Northern Ireland</rdfs:label>
+    <rdf:type rdf:resource="http://www.workingontologist.org/Examples/Chapter3/shakespeare#Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2000/01/rdf-schema#domain">
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label>domain</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/01/rdf-schema#"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>A domain of the subject property.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.workingontologist.org/Examples/Chapter3/geography#Wales">
+    <geo:partOf rdf:resource="http://www.workingontologist.org/Examples/Chapter3/geography#UK"/>
+    <rdfs:label>Wales</rdfs:label>
+    <rdf:type rdf:resource="http://www.workingontologist.org/Examples/Chapter3/shakespeare#Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2000/01/rdf-schema#label">
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:label>label</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/01/rdf-schema#"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:comment>A human-readable name for the subject.</rdfs:comment>
+    <rdfs:comment xml:lang="en"></rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.workingontologist.org/Examples/Chapter3/geography#ChannelIslands">
+    <geo:partOf rdf:resource="http://www.workingontologist.org/Examples/Chapter3/geography#UK"/>
+    <rdfs:label>Channel Islands</rdfs:label>
+    <rdf:type rdf:resource="http://www.workingontologist.org/Examples/Chapter3/shakespeare#Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.workingontologist.org/Examples/Chapter3/geography#isIn">
+    <rdfs:range rdf:resource="http://www.workingontologist.org/Examples/Chapter3/shakespeare#Place"/>
+    <rdfs:label>is in</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.workingontologist.org/Examples/Chapter3/shakespeare#Place"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.workingontologist.org/Examples/Chapter3/geography#partOf">
+    <rdfs:range rdf:resource="http://www.workingontologist.org/Examples/Chapter3/shakespeare#Place"/>
+    <rdfs:label>part of</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.workingontologist.org/Examples/Chapter3/shakespeare#Place"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+</rdf:RDF>

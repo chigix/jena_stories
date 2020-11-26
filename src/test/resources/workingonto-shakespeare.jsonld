@@ -1,0 +1,264 @@
+{
+  "@graph" : [ {
+    "@id" : "rdf:type",
+    "@type" : "rdf:Property",
+    "comment" : "The subject is an instance of a class.",
+    "domain" : "rdfs:Resource",
+    "isDefinedBy" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "label" : "type",
+    "range" : "rdfs:Class"
+  }, {
+    "@id" : "rdfs:domain",
+    "@type" : "rdf:Property",
+    "comment" : "A domain of the subject property.",
+    "domain" : "rdf:Property",
+    "isDefinedBy" : "http://www.w3.org/2000/01/rdf-schema#",
+    "label" : "domain",
+    "range" : "rdfs:Class"
+  }, {
+    "@id" : "rdfs:label",
+    "@type" : [ "rdf:Property", "owl:AnnotationProperty" ],
+    "comment" : [ "A human-readable name for the subject.", {
+      "@language" : "en",
+      "@value" : ""
+    } ],
+    "domain" : "rdfs:Resource",
+    "isDefinedBy" : [ "http://www.w3.org/2000/01/rdf-schema#", "http://www.w3.org/ns/prov-o#" ],
+    "label" : "label",
+    "range" : "rdfs:Literal"
+  }, {
+    "@id" : "rdfs:range",
+    "@type" : "rdf:Property",
+    "comment" : "A range of the subject property.",
+    "domain" : "rdf:Property",
+    "isDefinedBy" : "http://www.w3.org/2000/01/rdf-schema#",
+    "label" : "range",
+    "range" : "rdfs:Class"
+  }, {
+    "@id" : "rdfs:subClassOf",
+    "@type" : "rdf:Property",
+    "comment" : "The subject is a subclass of a class.",
+    "domain" : "rdfs:Class",
+    "isDefinedBy" : "http://www.w3.org/2000/01/rdf-schema#",
+    "label" : "subClassOf",
+    "range" : "rdfs:Class"
+  }, {
+    "@id" : "bio:livedIn",
+    "@type" : "owl:ObjectProperty",
+    "domain" : "lit:Person",
+    "label" : "lived in",
+    "range" : "lit:Place"
+  }, {
+    "@id" : "bio:married",
+    "@type" : "owl:ObjectProperty",
+    "domain" : "lit:Person",
+    "label" : "married",
+    "range" : "lit:Person"
+  }, {
+    "@id" : "http://www.workingontologist.org/Examples/Chapter3/shakespeare",
+    "@type" : "owl:Ontology"
+  }, {
+    "@id" : "lit:AnneHathaway",
+    "rdf:type" : {
+      "@id" : "lit:Person"
+    },
+    "label" : "Anne Hathaway",
+    "married" : "lit:Shakespeare",
+    "hasChild" : {
+      "@list" : [ "lit:Judith", "lit:Hamnet", "lit:Susanna" ]
+    }
+  }, {
+    "@id" : "lit:AsYouLikeIt",
+    "rdf:type" : {
+      "@id" : "lit:Play"
+    },
+    "label" : "As You Like It"
+  }, {
+    "@id" : "lit:Author",
+    "@type" : "owl:Class",
+    "label" : "Author",
+    "subClassOf" : "lit:Person"
+  }, {
+    "@id" : "lit:Hamlet",
+    "rdf:type" : {
+      "@id" : "lit:Play"
+    },
+    "label" : "Hamlet"
+  }, {
+    "@id" : "lit:Hamnet",
+    "rdf:type" : {
+      "@id" : "lit:Person"
+    },
+    "label" : "Hamnet"
+  }, {
+    "@id" : "lit:HenryV",
+    "rdf:type" : {
+      "@id" : "lit:Play"
+    },
+    "label" : "Henry V"
+  }, {
+    "@id" : "lit:Judith",
+    "rdf:type" : {
+      "@id" : "lit:Person"
+    },
+    "label" : "Judith"
+  }, {
+    "@id" : "lit:KingLear",
+    "rdf:type" : {
+      "@id" : "lit:Play"
+    },
+    "label" : "King Lear"
+  }, {
+    "@id" : "lit:LovesLaboursLost",
+    "rdf:type" : {
+      "@id" : "lit:Play"
+    },
+    "label" : "Loves Labours Lost"
+  }, {
+    "@id" : "lit:Macbeth",
+    "rdf:type" : {
+      "@id" : "lit:Play"
+    },
+    "label" : "Macbeth",
+    "setIn" : "geo:Scotland"
+  }, {
+    "@id" : "lit:MeasureForMeasure",
+    "rdf:type" : {
+      "@id" : "lit:Play"
+    },
+    "label" : "Measure for Measure"
+  }, {
+    "@id" : "lit:Othello",
+    "rdf:type" : {
+      "@id" : "lit:Play"
+    },
+    "label" : "Othello"
+  }, {
+    "@id" : "lit:Person",
+    "@type" : "owl:Class",
+    "label" : "Person"
+  }, {
+    "@id" : "lit:Place",
+    "@type" : "owl:Class",
+    "label" : "Place"
+  }, {
+    "@id" : "lit:Play",
+    "@type" : "owl:Class",
+    "label" : "Play"
+  }, {
+    "@id" : "lit:Shakespeare",
+    "rdf:type" : {
+      "@id" : "lit:Author"
+    },
+    "label" : "Shakespeare",
+    "livedIn" : "geo:Stratford",
+    "hasChild" : {
+      "@list" : [ "lit:Susanna", "lit:Hamnet", "lit:Judith" ]
+    },
+    "wrote" : [ "lit:HenryV", "lit:AsYouLikeIt", "lit:MeasureForMeasure", "lit:TheTempest", "lit:TwelfthNight", "lit:WintersTale", "lit:Macbeth", "lit:KingLear", "lit:LovesLaboursLost", "lit:Hamlet", "lit:Othello" ]
+  }, {
+    "@id" : "lit:Susanna",
+    "rdf:type" : {
+      "@id" : "lit:Person"
+    },
+    "label" : "Susanna"
+  }, {
+    "@id" : "lit:TheTempest",
+    "rdf:type" : {
+      "@id" : "lit:Play"
+    },
+    "label" : "The Tempest"
+  }, {
+    "@id" : "lit:TwelfthNight",
+    "rdf:type" : {
+      "@id" : "lit:Play"
+    },
+    "label" : "Twelfth Night"
+  }, {
+    "@id" : "lit:WintersTale",
+    "rdf:type" : {
+      "@id" : "lit:Play"
+    },
+    "label" : "A Winters Tale"
+  }, {
+    "@id" : "lit:hasChild",
+    "@type" : "owl:ObjectProperty",
+    "label" : "has child"
+  }, {
+    "@id" : "lit:setIn",
+    "@type" : "owl:ObjectProperty",
+    "domain" : "lit:Play",
+    "label" : "set in",
+    "range" : "lit:Place"
+  }, {
+    "@id" : "lit:wrote",
+    "@type" : "owl:ObjectProperty",
+    "domain" : "lit:Author",
+    "label" : "wrote",
+    "range" : "lit:Play"
+  } ],
+  "@context" : {
+    "wrote" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/shakespeare#wrote",
+      "@type" : "@id"
+    },
+    "livedIn" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/biography#livedIn",
+      "@type" : "@id"
+    },
+    "hasChild" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/shakespeare#hasChild",
+      "@type" : "@id"
+    },
+    "label" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#label"
+    },
+    "range" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#range",
+      "@type" : "@id"
+    },
+    "domain" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#domain",
+      "@type" : "@id"
+    },
+    "subClassOf" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "@type" : "@id"
+    },
+    "rest" : {
+      "@id" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest",
+      "@type" : "@id"
+    },
+    "first" : {
+      "@id" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#first",
+      "@type" : "@id"
+    },
+    "isDefinedBy" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "@type" : "@id"
+    },
+    "comment" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#comment"
+    },
+    "setIn" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/shakespeare#setIn",
+      "@type" : "@id"
+    },
+    "married" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/biography#married",
+      "@type" : "@id"
+    },
+    "@vocab" : "https://swwo.linked.data.world/d/chapter-3-example-queries/",
+    "geo" : "http://www.workingontologist.org/Examples/Chapter3/geography#",
+    "owl" : "http://www.w3.org/2002/07/owl#",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "lit" : "http://www.workingontologist.org/Examples/Chapter3/shakespeare#",
+    "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "fn" : "http://www.w3.org/2005/xpath-functions#",
+    "bio" : "http://www.workingontologist.org/Examples/Chapter3/biography#",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "foaf" : "http://xmlns.com/foaf/0.1/",
+    "ch3" : "https://swwo.linked.data.world/d/chapter-3-examples/",
+    "dc" : "http://purl.org/dc/elements/1.1/"
+  }
+}

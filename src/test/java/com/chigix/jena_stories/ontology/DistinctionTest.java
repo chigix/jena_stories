@@ -22,6 +22,7 @@ public class DistinctionTest {
 
   /**
    * https://jena.apache.org/documentation/ontology/#the-generic-ontology-type-ontresource
+   * https://jena.apache.org/documentation/inference/index.html#directRelations
    */
   @Test
   public void testDistinction() {

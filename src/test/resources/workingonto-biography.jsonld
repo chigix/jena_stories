@@ -1,0 +1,82 @@
+{
+  "@graph" : [ {
+    "@id" : "rdf:type",
+    "@type" : "rdf:Property",
+    "comment" : "The subject is an instance of a class.",
+    "domain" : "rdfs:Resource",
+    "isDefinedBy" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "label" : "type",
+    "range" : "rdfs:Class"
+  }, {
+    "@id" : "rdfs:domain",
+    "@type" : "rdf:Property",
+    "comment" : "A domain of the subject property.",
+    "domain" : "rdf:Property",
+    "isDefinedBy" : "http://www.w3.org/2000/01/rdf-schema#",
+    "label" : "domain",
+    "range" : "rdfs:Class"
+  }, {
+    "@id" : "rdfs:label",
+    "@type" : [ "rdf:Property", "owl:AnnotationProperty" ],
+    "comment" : [ "A human-readable name for the subject.", {
+      "@language" : "en",
+      "@value" : ""
+    } ],
+    "domain" : "rdfs:Resource",
+    "isDefinedBy" : [ "http://www.w3.org/2000/01/rdf-schema#", "http://www.w3.org/ns/prov-o#" ],
+    "label" : "label",
+    "range" : "rdfs:Literal"
+  }, {
+    "@id" : "rdfs:range",
+    "@type" : "rdf:Property",
+    "comment" : "A range of the subject property.",
+    "domain" : "rdf:Property",
+    "isDefinedBy" : "http://www.w3.org/2000/01/rdf-schema#",
+    "label" : "range",
+    "range" : "rdfs:Class"
+  }, {
+    "@id" : "bio:livedIn",
+    "@type" : "owl:ObjectProperty",
+    "domain" : "lit:Person",
+    "label" : "lived in",
+    "range" : "lit:Place"
+  }, {
+    "@id" : "bio:married",
+    "@type" : "owl:ObjectProperty",
+    "domain" : "lit:Person",
+    "label" : "married",
+    "range" : "lit:Person"
+  } ],
+  "@context" : {
+    "range" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#range",
+      "@type" : "@id"
+    },
+    "label" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#label"
+    },
+    "isDefinedBy" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "@type" : "@id"
+    },
+    "domain" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#domain",
+      "@type" : "@id"
+    },
+    "comment" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#comment"
+    },
+    "@vocab" : "https://swwo.linked.data.world/d/chapter-3-example-queries/",
+    "geo" : "http://www.workingontologist.org/Examples/Chapter3/geography#",
+    "owl" : "http://www.w3.org/2002/07/owl#",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "lit" : "http://www.workingontologist.org/Examples/Chapter3/shakespeare#",
+    "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "fn" : "http://www.w3.org/2005/xpath-functions#",
+    "bio" : "http://www.workingontologist.org/Examples/Chapter3/biography#",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "foaf" : "http://xmlns.com/foaf/0.1/",
+    "ch3" : "https://swwo.linked.data.world/d/chapter-3-examples/",
+    "dc" : "http://purl.org/dc/elements/1.1/"
+  }
+}

@@ -1,0 +1,269 @@
+{
+  "@graph" : [ {
+    "@id" : "rdf:type",
+    "@type" : "rdf:Property",
+    "comment" : "The subject is an instance of a class.",
+    "domain" : "rdfs:Resource",
+    "isDefinedBy" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "label" : "type",
+    "range" : "rdfs:Class"
+  }, {
+    "@id" : "rdfs:domain",
+    "@type" : "rdf:Property",
+    "comment" : "A domain of the subject property.",
+    "domain" : "rdf:Property",
+    "isDefinedBy" : "http://www.w3.org/2000/01/rdf-schema#",
+    "label" : "domain",
+    "range" : "rdfs:Class"
+  }, {
+    "@id" : "rdfs:label",
+    "@type" : [ "rdf:Property", "owl:AnnotationProperty" ],
+    "comment" : [ "A human-readable name for the subject.", {
+      "@language" : "en",
+      "@value" : ""
+    } ],
+    "domain" : "rdfs:Resource",
+    "isDefinedBy" : [ "http://www.w3.org/2000/01/rdf-schema#", "http://www.w3.org/ns/prov-o#" ],
+    "label" : "label",
+    "range" : "rdfs:Literal"
+  }, {
+    "@id" : "rdfs:range",
+    "@type" : "rdf:Property",
+    "comment" : "A range of the subject property.",
+    "domain" : "rdf:Property",
+    "isDefinedBy" : "http://www.w3.org/2000/01/rdf-schema#",
+    "label" : "range",
+    "range" : "rdfs:Class"
+  }, {
+    "@id" : "owl:versionInfo",
+    "@type" : "owl:AnnotationProperty",
+    "comment" : "The annotation property that provides version information for an ontology or another OWL construct.",
+    "domain" : "rdfs:Resource",
+    "isDefinedBy" : "http://www.w3.org/2002/07/owl#",
+    "label" : "versionInfo",
+    "range" : "rdfs:Resource"
+  }, {
+    "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product",
+    "@type" : "owl:Ontology",
+    "versionInfo" : "Created with TopBraid Spreadsheet converter"
+  }, {
+    "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product",
+    "@type" : "owl:Class",
+    "label" : "Product"
+  }, {
+    "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product1",
+    "rdf:type" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product"
+    },
+    "label" : "Product 1",
+    "Product_Available" : "23",
+    "Product_Division" : "Manufacturing support",
+    "Product_ID" : "1",
+    "Product_Manufacture_Location" : "Sacramento",
+    "Product_ModelNo" : "ZX-3",
+    "Product_Product_Line" : "Paper machine",
+    "Product_SKU" : "FB3524"
+  }, {
+    "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product2",
+    "rdf:type" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product"
+    },
+    "label" : "Product 2",
+    "Product_Available" : "4",
+    "Product_Division" : "Manufacturing support",
+    "Product_ID" : "2",
+    "Product_Manufacture_Location" : "Sacramento",
+    "Product_ModelNo" : "ZX-3P",
+    "Product_Product_Line" : "Paper machine",
+    "Product_SKU" : "KD5243"
+  }, {
+    "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product3",
+    "rdf:type" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product"
+    },
+    "label" : "Product 3",
+    "Product_Available" : "34",
+    "Product_Division" : "Manufacturing support",
+    "Product_ID" : "3",
+    "Product_Manufacture_Location" : "Sacramento",
+    "Product_ModelNo" : "ZX-3S",
+    "Product_Product_Line" : "Paper machine",
+    "Product_SKU" : "IL4028"
+  }, {
+    "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product4",
+    "rdf:type" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product"
+    },
+    "label" : "Product 4",
+    "Product_Available" : "23",
+    "Product_Division" : "Control Engineering",
+    "Product_ID" : "4",
+    "Product_Manufacture_Location" : "Elizabeth",
+    "Product_ModelNo" : "B-1430",
+    "Product_Product_Line" : "Feedback line",
+    "Product_SKU" : "KS4520"
+  }, {
+    "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product5",
+    "rdf:type" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product"
+    },
+    "label" : "Product 5",
+    "Product_Available" : "14",
+    "Product_Division" : "Control Engineering",
+    "Product_ID" : "5",
+    "Product_Manufacture_Location" : "Elizabeth",
+    "Product_ModelNo" : "B-1430X",
+    "Product_Product_Line" : "Feedback line",
+    "Product_SKU" : "CL5934"
+  }, {
+    "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product6",
+    "rdf:type" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product"
+    },
+    "label" : "Product 6",
+    "Product_Available" : "0",
+    "Product_Division" : "Control Engineering",
+    "Product_ID" : "6",
+    "Product_Manufacture_Location" : "Seoul",
+    "Product_ModelNo" : "B-1431",
+    "Product_Product_Line" : "Active sensor",
+    "Product_SKU" : "KK3945"
+  }, {
+    "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product7",
+    "rdf:type" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product"
+    },
+    "label" : "Product 7",
+    "Product_Available" : "100",
+    "Product_Division" : "Accessories",
+    "Product_ID" : "7",
+    "Product_Manufacture_Location" : "Hong Kong",
+    "Product_ModelNo" : "DBB-12",
+    "Product_Product_Line" : "Monitor",
+    "Product_SKU" : "ND5520"
+  }, {
+    "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product8",
+    "rdf:type" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product"
+    },
+    "label" : "Product 8",
+    "Product_Available" : "4",
+    "Product_Division" : "Safety",
+    "Product_ID" : "8",
+    "Product_Manufacture_Location" : "Cleveland",
+    "Product_ModelNo" : "SP-1234",
+    "Product_Product_Line" : "Safety Valve",
+    "Product_SKU" : "HI4554"
+  }, {
+    "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product9",
+    "rdf:type" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product"
+    },
+    "label" : "Product 9",
+    "Product_Available" : "14",
+    "Product_Division" : "Safety",
+    "Product_ID" : "9",
+    "Product_Manufacture_Location" : "Cleveland",
+    "Product_ModelNo" : "SPX-1234",
+    "Product_Product_Line" : "Safety Valve",
+    "Product_SKU" : "OP5333"
+  }, {
+    "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product_Available",
+    "@type" : "owl:DatatypeProperty",
+    "domain" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product",
+    "label" : "Available",
+    "range" : "xsd:string"
+  }, {
+    "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product_Division",
+    "@type" : "owl:DatatypeProperty",
+    "domain" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product",
+    "label" : "Division",
+    "range" : "xsd:string"
+  }, {
+    "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product_ID",
+    "@type" : "owl:DatatypeProperty",
+    "domain" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product",
+    "label" : "ID",
+    "range" : "xsd:string"
+  }, {
+    "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product_Manufacture_Location",
+    "@type" : "owl:DatatypeProperty",
+    "domain" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product",
+    "label" : "Manufacture Location",
+    "range" : "xsd:string"
+  }, {
+    "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product_ModelNo",
+    "@type" : "owl:DatatypeProperty",
+    "domain" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product",
+    "label" : "ModelNo",
+    "range" : "xsd:string"
+  }, {
+    "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product_Product_Line",
+    "@type" : "owl:DatatypeProperty",
+    "domain" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product",
+    "label" : "Product Line",
+    "range" : "xsd:string"
+  }, {
+    "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product_SKU",
+    "@type" : "owl:DatatypeProperty",
+    "domain" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product",
+    "label" : "SKU",
+    "range" : "xsd:string"
+  } ],
+  "@context" : {
+    "versionInfo" : {
+      "@id" : "http://www.w3.org/2002/07/owl#versionInfo"
+    },
+    "Product_SKU" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product_SKU"
+    },
+    "Product_Product_Line" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product_Product_Line"
+    },
+    "Product_ModelNo" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product_ModelNo"
+    },
+    "Product_Manufacture_Location" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product_Manufacture_Location"
+    },
+    "Product_ID" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product_ID"
+    },
+    "Product_Division" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product_Division"
+    },
+    "Product_Available" : {
+      "@id" : "http://www.workingontologist.org/Examples/Chapter3/Product#Product_Available"
+    },
+    "label" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#label"
+    },
+    "range" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#range",
+      "@type" : "@id"
+    },
+    "domain" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#domain",
+      "@type" : "@id"
+    },
+    "isDefinedBy" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+      "@type" : "@id"
+    },
+    "comment" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#comment"
+    },
+    "@vocab" : "https://swwo.linked.data.world/d/chapter-3-example-queries/",
+    "geo" : "http://www.workingontologist.org/Examples/Chapter3/geography#",
+    "owl" : "http://www.w3.org/2002/07/owl#",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "lit" : "http://www.workingontologist.org/Examples/Chapter3/shakespeare#",
+    "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "fn" : "http://www.w3.org/2005/xpath-functions#",
+    "bio" : "http://www.workingontologist.org/Examples/Chapter3/biography#",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "foaf" : "http://xmlns.com/foaf/0.1/",
+    "ch3" : "https://swwo.linked.data.world/d/chapter-3-examples/",
+    "dc" : "http://purl.org/dc/elements/1.1/"
+  }
+}
