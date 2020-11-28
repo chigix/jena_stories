@@ -5,6 +5,7 @@ import static org.junit.Assert.assertThat;
 import java.util.Iterator;
 
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.nullValue;
 
 import org.apache.jena.rdf.model.InfModel;
 import org.apache.jena.rdf.model.Model;
@@ -34,8 +35,13 @@ public class GenericInferenceTest {
     trivialSetup = ModelFactory.createDefaultModel();
     p = trivialSetup.createProperty(NS, "p");
     q = trivialSetup.createProperty(NS, "q");
+    Resource a = trivialSetup.createResource(NS + "a");
     trivialSetup.add(p, RDFS.subPropertyOf, q);
-    trivialSetup.createResource(NS + "a").addProperty(p, "foo");
+    a.addProperty(p, "foo");
+    assertThat(a.getProperty(p).getString(), equalTo("foo"));
+    // Entailment to "foo" value is still unavailable
+    // during this trivial setup without Reasoner injected
+    assertThat(a.getProperty(q), nullValue());
   }
 
   /**
