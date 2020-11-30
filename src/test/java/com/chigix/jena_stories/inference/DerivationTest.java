@@ -132,4 +132,26 @@ public class DerivationTest {
     assertThat(inf1.getProperty(rcA, p).getObject(), equalTo(rcD));
   }
 
+  @Test
+  public void infModelModify() {
+    Model trivial = ModelFactory.createDefaultModel();
+    String rules = "[rule1: (?a urn:x-hp:eg/p ?b) (?b urn:x-hp:eg/p ?c) -> (?a urn:x-hp:eg/p ?c)]";
+    Reasoner reasoner = new GenericRuleReasoner(Rule.parseRules(rules));
+    reasoner.setDerivationLogging(true);
+    InfModel inf = ModelFactory.createInfModel(reasoner, trivial);
+
+    Property p = inf.createProperty(NS + "p");
+    Resource rcA = inf.createResource(NS + "A");
+    Resource rcB = inf.createResource(NS + "B");
+    Resource rcC = inf.createResource(NS + "C");
+    Resource rcD = inf.createResource(NS + "D");
+    rcA.addProperty(p, rcB);
+    rcB.addProperty(p, rcC);
+    rcC.addProperty(p, rcD);
+    // Base model is still changed by the normal `add` and `remove`
+    // calls to the `InfModel`.
+    assertThat(trivial.getProperty(rcA, p).getObject(), equalTo(rcB));
+    assertThat(inf.getProperty(rcA, p).getObject(), equalTo(rcD));
+  }
+
 }
